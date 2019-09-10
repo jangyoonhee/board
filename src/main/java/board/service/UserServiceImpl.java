@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService{
 	}
     
     @Override
-    public void insertUser(UserDto user) throws Exception{
+    public Integer insertUser(UserDto user) throws Exception{
         return userMapper.insertUser( user );
 	}
 	

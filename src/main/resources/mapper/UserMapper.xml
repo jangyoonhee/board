@@ -21,19 +21,23 @@
 		]]>
     </select>
     
-    <insert id="insertUser" paranerterType="">
-    		<![CDATA[
-			INSERT(
-				email,
+   <insert id="insertUser" parameterType="board.dto.UserDto" useGeneratedKeys="true" keyProperty="userIdx">
+		<![CDATA[
+			INSERT INTO t_user
+			(
+				id, 
+				email, 
 				pwd,
-				id,
-                image
-			)VALUE(
-                #{email}
-            )    
-				
+				image
+			) 
+			VALUES 
+			(
+				#{id}, 
+				#{email}, 
+				#{pwd}, 
+				#{image}			
+			)
 		]]>
-    
-    </insert>
+	</insert>
     
 </mapper>

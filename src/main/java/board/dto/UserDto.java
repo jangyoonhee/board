@@ -1,5 +1,8 @@
 package board.dto;
 
+import lombok.Data;
+
+@Data
 public class UserDto {
 	private int userIdx;
 	private String id;

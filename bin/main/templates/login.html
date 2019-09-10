@@ -101,14 +101,15 @@
     	event.preventDefault();
     	
 		var formData = $("#loginForm").serialize();
-	debugger;
+
         $.ajax({
             type : "POST",
             crossOrigin: true,
             data: formData,
-            url : "/v1/user/login.do",
+            url : "/v1/user/login.do", 
+            enctype : "multipart/form-data",
+            contentType : "application/x-www-form-urlencoded; charset=UTF-8",
             success : function(data) {
-            	debugger;
                if (data == 'success') {
                     alert('로그인에 성곻하였습니다.')
                     location.href = 'index.html'
