@@ -13,12 +13,27 @@
 				contents,
 				creator_id
 			FROM
-				user
+				t_user
 			WHERE
 				email = #{boardIdx} 
 			AND 
 			 	 pwd = #{pwd}
 		]]>
     </select>
+    
+    <insert id="insertUser" paranerterType="">
+    		<![CDATA[
+			INSERT(
+				email,
+				pwd,
+				id,
+                image
+			)VALUE(
+                #{email}
+            )    
+				
+		]]>
+    
+    </insert>
     
 </mapper>

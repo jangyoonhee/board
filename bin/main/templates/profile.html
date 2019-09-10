@@ -35,59 +35,29 @@
       *********************************************************************************************************************************************************** -->
   <div id="login-page">
     <div class="container">
-      <div class="row mt">
-          <div class="col-lg-6 col-md-6 col-sm-6" style="margin-top:10%">
-            <h4 class="title">create account</h4>
-            <div id="message"></div>
-            <form id="registForm" class="contact-form php-mail-form" role="form" method="POST">
-              <div class="form-group">
-                <input type="name" name="name" class="form-control" id="contact-name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" >
-                <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <input type="email" name="email" class="form-control" id="contact-email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
-                <div class="validate"></div>
-              </div>
-			  <div class="form-group">
-                <input type="text" name="id" class="form-control" id="contact-subject" placeholder="Your ID" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
-                <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <input type="password" name="pwd" class="form-control" id="contact-subject" placeholder="password" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
-                <div class="validate"></div>
-              </div>
-			  <div class="form-group">
-                <input type="password" name="pwd_cheked" class="form-control" id="contact-subject" placeholder="checked password" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
-                <div class="validate"></div>
-              </div>
-
-              <div class="loading"></div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
-
-              <div class="form-send">
-                <button type="submit" class="btn btn-large btn-primary">sign up</button>
-              </div>
-
-            </form>
-          </div>
-
-          <div class="col-lg-6 col-md-6 col-sm-6" style="margin-top:10%">
-            <h4 class="title">Contact Details</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            <ul class="contact_details">
-              <li><i class="fa fa-envelope-o"></i> info@yoursite.com</li>
-              <li><i class="fa fa-phone-square"></i> +34 5565 6555</li>
-              <li><i class="fa fa-home"></i> Some Fine Address, 887, Madrid, Spain.</li>
-            </ul>
-            <!-- contact_details -->
-          </div>
+      <form id="registForm" class="form-login">
+        <h2 class="form-login-heading">sign up now</h2>
+        <div class="login-wrap">
+          <input type="text" name="ID"   class="form-control" placeholder="ID">
+          <br>
+          <input type="text" name="email"  class="form-control" placeholder="your email" autofocus>
+          <br>
+          <input type="password" name="pwd"   class="form-control" placeholder="Password">
+          <br>
+          <input type="password" name="checkdpwd"   class="form-control" placeholder="checked Password">
+          <br>
+          <button class="btn btn-theme btn-block" id="btn_login" ><i class="fa fa-lock"></i>CREATE ACCOUNT</button>
+          <hr>
+         
         </div>
+      
+      </form>
     </div>
   </div>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
   <!--BACKSTRETCH-->
   <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
   <script type="text/javascript" src="lib/jquery.backstretch.min.js"></script>

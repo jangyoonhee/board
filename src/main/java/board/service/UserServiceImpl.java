@@ -20,6 +20,11 @@ public class UserServiceImpl implements UserService{
 	public UserDto selectUser(String email, String pwd) throws Exception {
 		return userMapper.selectUser( email, pwd );
 	}
+    
+    @Override
+    public void insertUser(UserDto user) throws Exception{
+        return userMapper.insertUser( user );
+	}
 	
 }	
 
