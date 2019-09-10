@@ -40,11 +40,13 @@ public class UserController {
 
 
     //회원가입
+    //http://www.namooz.com/2016/12/10/spring-boot-restful-web-service-example-get-post-put-delete-patch/
+    //get방식은 body의 내용을 담을수없다. 그러므로 requestbody를 사욯알수없다. @requestBody는 post에만 붙는다.
 	@ResponseBody
 	@RequestMapping(value="regist.do", method=RequestMethod.POST)
-	public Map<String,String> regist( HttpServletRequest req , ModelMap model ) throws Exception{
+	public Map<String,String> regist( HttpServletRequest req, @requestBody userDto){
         Map<String,String> rtnMap = new HashMap<String,String>();
-        //아이비가 유져테이블에 있는지 확인
+        //아이디 및 이메일이 유져테이블에 있는지 확인
         //없을 경우 insert 
         rtnMap.put( "result" , "success" );
 		return rtnMap;
