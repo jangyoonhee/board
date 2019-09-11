@@ -39,7 +39,7 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="margin-top:10%">
             <h4 class="title">create account</h4>
             <div id="message"></div>
-            <form id="registForm" class="contact-form php-mail-form" role="form" method="POST">
+            <form id="registForm" class="contact-form php-mail-form" role="form" method="POST" enctype="multipart/form-data">
               <div class="form-group">
                 <input type="name" name="name" class="form-control" id="contact-name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" >
                 <div class="validate"></div>
@@ -64,7 +64,7 @@
               <div class="loading"></div>
               <div class="error-message"></div>
               <div class="sent-message">Your message has been sent. Thank you!</div>
-
+              <input type="file" id="files" name="files" multiple="multiple">
               <div class="form-send">
                 <button type="submit" class="btn btn-large btn-primary">sign up</button>
               </div>
@@ -106,7 +106,7 @@
         }
         
 		var formData = $("#registForm").serialize();
-
+    
         $.ajax({
             type : "POST",
             crossOrigin: true,
