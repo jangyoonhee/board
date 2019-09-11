@@ -11,55 +11,73 @@ import org.springframework.web.servlet.ModelAndView;
 import board.dto.BoardDto;
 import board.service.BoardService;
 
+@RestController
 @Controller
 public class BoardController {
 	
 	@Autowired
 	private BoardService boardService; 
 	
-	
-	@RequestMapping("/")
-	public String start() throws Exception{
-		return "login";
+	@RequestMapping(value="/api/board", method=RequestMethod.GET)
+	public List<BoardDto> openBoardList() throws Exception{
+        System.out.println("board.openBoardList");
+		return boardService.selectBoardList();
 	}
 	
-	@RequestMapping("/board/openBoardList.do")
-	public ModelAndView openBoardList() throws Exception{
-		ModelAndView mv = new ModelAndView("board/boardList");
-		List<BoardDto> list = boardService.selectBoardList();
-		mv.addObject("list", list);
-		return mv;
-	}
-
-	@RequestMapping("/board/openBoardWrite.do")
-	public String openBoardWrite() throws Exception{
-		return "/board/boardWrite";
+	@RequestMapping(value="/api/board/write", method=RequestMethod.POST)
+	public void insertBoard(@RequestBody BoardDto board) throws Exception{
+		boardService.insertBoard(board, null);
 	}
 	
-	@RequestMapping("/board/insertBoard.do")
-	public String insertBoard(BoardDto board) throws Exception{
-		boardService.insertBoard(board);
-		return "redirect:/board/openBoardList.do";
-	}
-	
-	@RequestMapping("/board/openBoardDetail.do")
-	public ModelAndView openBoardDetail(@RequestParam int boardIdx) throws Exception{
-		ModelAndView mv = new ModelAndView("board/boardDetail");
-		BoardDto board = boardService.selectBoardDetail(boardIdx);
-		mv.addObject("board", board);
+	@RequestMapping(value="/api/board/{boardIdx}", method=RequestMethod.GET)
+	public BoardDto openBoardDetail(@PathVariable("boardIdx") int boardIdx) throws Exception{
 		
-		return mv;
+		return boardService.selectBoardDetail(boardIdx);
 	}
 	
-	@RequestMapping("/board/updateBoard.do")
-	public String updateBoard(BoardDto board) throws Exception{
+	@RequestMapping(value="/api/board/{boardIdx}", method=RequestMethod.PUT)
+	public String updateBoard(@RequestBody BoardDto board) throws Exception{
 		boardService.updateBoard(board);
-		return "redirect:/board/openBoardList.do";
+		return "redirect:/board";
 	}
 	
-	@RequestMapping("/board/deleteBoard.do")
-	public String deleteBoard(int boardIdx) throws Exception{
+	@RequestMapping(value="/api/board/{boardIdx}", method=RequestMethod.DELETE)
+	public String deleteBoard(@PathVariable("boardIdx") int boardIdx) throws Exception{
 		boardService.deleteBoard(boardIdx);
-		return "redirect:/board/openBoardList.do";
+		return "redirect:/board";
 	}
 }
+
+/*
+
+  private int boardIdx;
+	
+	private String title;
+	
+	private String contents;
+	
+	private int hitCnt;
+	
+	private String creatorId;
+	
+	private String createdDatetime;
+	
+	private String updaterId;
+	
+	private String updatedDatetime;
+	
+	private List<BoardFileDto> fileList;
+	
+    
+CREATE TABLE T_BOARD (
+    boardIdx int not null primary key auto_increment,
+    title varchar(30),
+    hitCnt int,
+    creatorId varchar(30),
+    createdDatetime varchar(30),
+    updaterId varchar(30),
+    updatedDatetime varchar(30),
+    List<BoardFileDto> fileList
+)
+*/
+

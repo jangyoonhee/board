@@ -4,14 +4,23 @@ import lombok.Data;
 
 @Data
 public class BoardDto { 
-	private int boardIdx;
+    
+    private int boardIdx;
+	
 	private String title;
+	
 	private String contents;
+	
+	private int hitCnt;
+	
 	private String creatorId;
 	
-/*	@Override
-	public String toString() {
-		return this.title + this.contents;
-	}*/
+	private String createdDatetime;
+	
+	private String updaterId;
+	
+	private String updatedDatetime;
+	
+	private List<BoardFileDto> fileList;
 	
 }
