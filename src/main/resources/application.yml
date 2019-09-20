@@ -1,17 +1,14 @@
 server:
-  port: 8090
+  port: 8070
 spring: 
   application:
     name: board
-  resources:
-       cache:
-           period:0
   datasource: 
     hikari: 
       jdbc-url: jdbc:mysql://localhost:3306/bootBoarddb?serverTimezone=UTC
       username: root
       password: 1004
-      driver-class-name: com.mysql.cj.jdbc.Driver
+      driver-class-name: com.mysql.jdbc.Driver
       pool-name: hikari-cp
       maximum-pool-size: 30
       minimum-idle: 2

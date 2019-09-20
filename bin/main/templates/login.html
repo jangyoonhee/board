@@ -56,7 +56,7 @@
           </div>
           <div class="registration">
             Don't have an account yet?<br/>
-            <a class="" href="profile.html">
+            <a class="" href="regist.html">
                Create an account
               </a>
           </div>
@@ -96,25 +96,21 @@
       speed: 500
     });
     
-    $('#btn_login').click(function() {
- 
+    $('#btn_login').click(function() { 
     	event.preventDefault();
-    	
-		var formData = $("#loginForm").serialize();
 
         $.ajax({
             type : "POST",
             crossOrigin: true,
-            data: formData,
-            url : "/v1/user/login.do", 
-            enctype : "multipart/form-data",
-            contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+            data: $("#loginForm").serialize(),
+            url : "api/v1/user/loginEnter.do", 
             success : function(data) {
-               if (data == 'success') {
+            	debugger;
+               if (data.result == 'success') {
                     alert('로그인에 성곻하였습니다.')
-                    location.href = 'index.html'
+                    location.href = 'index.do'
                 } else {
-                	alert('로그인에 실패하였습니다.')
+                	alert(data.message)
                 }
             },
             error : function(request, status, error) {

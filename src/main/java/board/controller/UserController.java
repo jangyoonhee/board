@@ -6,50 +6,57 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import board.DataDefine;
 import board.dto.UserDto;
 import board.service.UserService;
 
-@Controller
-@RequestMapping("/v1/user/")
+@RestController
+@RequestMapping("api/v1/user/")
 public class UserController {
 	
 	@Autowired
 	private UserService userService; 
-	
-    
+
     //회원 로그인      
-	@ResponseBody
-	@RequestMapping(value="login.do",  method=RequestMethod.POST)
-	public Map<String,String> login( HttpServletRequest req, @RequestParam(value="email")String email ,@RequestParam(value="pwd") String pwd){
-		System.out.println( "email"+email + " , "+ "pwd" + pwd );
-        Map<String,String> rtnMap = new HashMap<String,String>();
-        //아이디 비번 유져테이블에 있는지 확인
-        rtnMap.put( "result" , "success" );
+	@RequestMapping(value="/loginEnter.do",  method=RequestMethod.POST)
+	public Map<String,String> login( UserDto userDto ) throws Exception {
+		Map<String,String> result = userService.selectUser(userDto);
+		Map<String,String> rtnMap = new HashMap<String,String>();
+		
+		if( result.get( "code" ).equals(DataDefine.getInstance().USER_LOGIN_STATE_SUCCESS)) {
+			  rtnMap.put( "result" , "success" );
+		} else {
+			  rtnMap.put( "result" , "fail" );
+		}
+		
+		rtnMap.put( "message", DataDefine.getInstance().getMessage(result.get( "code" )));
 		return rtnMap;
 	}
 
-
     //회원가입
-    //http://www.namooz.com/2016/12/10/spring-boot-restful-web-service-example-get-post-put-delete-patch/
-    //get방식은 body의 내용을 담을수없다. 그러므로 requestbody를 사욯알수없다. @requestBody는 post에만 붙는다.
-	@ResponseBody
-	@RequestMapping(value="regist.do", method=RequestMethod.POST)
-	public Map<String,String> regist(@RequestBody userDto){
-        Map<String,String> rtnMap = new HashMap<String,String>();
-        userService.insertUser( userDto );
-        //아이디 및 이메일이 유져테이블에 있는지 확인
-        //없을 경우 insert 
-        rtnMap.put( "result" , "success" );
+	@RequestMapping(value="/registAdd.do", method=RequestMethod.POST)
+	public Map<String,String> registAdd(UserDto userDto, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception{
+		Map<String,String> result = userService.selectUser(userDto);
+		Map<String,String> rtnMap = new HashMap<String,String>();
+		if( result.get( "code" ).equals(DataDefine.getInstance().USER_LOGIN_STATE_NONE_EMAIL)) {
+			  userService.insertUser( userDto , multipartHttpServletRequest );
+			  rtnMap.put( "result" , "success" );
+		} else {
+			 rtnMap.put( "result" , "fail" );
+			if( result.get( "code" ).equals(DataDefine.getInstance().USER_LOGIN_STATE_WRONG_PWD)) {
+				result.put( "code", DataDefine.getInstance().USER_LOGIN_STATE_EXIST_EMAIL);
+			}
+			
+		}
+
+		rtnMap.put( "message", DataDefine.getInstance().getMessage(result.get( "code" )));
 		return rtnMap;
 	}
 	

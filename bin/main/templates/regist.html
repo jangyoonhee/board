@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <title>Dashio - Bootstrap Admin Template</title>
+
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!--external css-->
+  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet">
+  
+  <!-- =======================================================
+    Template Name: Dashio
+    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
+    Author: TemplateMag.com
+    License: https://templatemag.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+  <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+  <div id="login-page">
+    <div class="container">
+      <div class="row mt">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="margin-top:10%">
+            <h4 class="title">create account</h4>
+            <div id="message"></div>
+            <form id="registForm" class="contact-form php-mail-form" role="form" method="POST"  enctype="multipart/form-data">
+              <div class="form-group">
+                <input type="text" name="userName" class="form-control" id="contact-name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" >
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" class="form-control" id="contact-email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                <div class="validate"></div>
+              </div>
+			  <div class="form-group">
+                <input type="text" name="id" class="form-control" id="contact-subject" placeholder="Your ID" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <input type="password" name="pwd" class="form-control" id="contact-subject" placeholder="password" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                <div class="validate"></div>
+              </div>
+			  <div class="form-group">
+                <input type="password" name="pwd_cheked" class="form-control" id="contact-subject" placeholder="checked password" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">                     
+				<input type="file" id="files" name="files" multiple="multiple">	
+                <div class="validate"></div>
+              </div>
+
+              <div class="loading"></div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+             
+              <div class="form-send">
+                <button id="registBtn" class="btn btn-large btn-primary">sign up</button>
+              </div>
+
+            </form>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6" style="margin-top:10%">
+            <h4 class="title">Contact Details</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <ul class="contact_details">
+              <li><i class="fa fa-envelope-o"></i> info@yoursite.com</li>
+              <li><i class="fa fa-phone-square"></i> +34 5565 6555</li>
+              <li><i class="fa fa-home"></i> Some Fine Address, 887, Madrid, Spain.</li>
+            </ul>
+            <!-- contact_details -->
+          </div>
+        </div>
+    </div>
+  </div>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <!--BACKSTRETCH-->
+  <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+  <script type="text/javascript" src="lib/jquery.backstretch.min.js"></script>
+  <script>
+    $.backstretch("img/login-bg.jpg", {
+      speed: 500
+    });
+    
+    $('#registBtn').click(function() { 
+    	event.preventDefault();
+
+        var formData = new FormData($('#registForm')[0]);
+        
+        $.ajax({
+            type : "POST",
+            crossOrigin: true,
+            data: formData,
+            enctype: "multipart/form-data",
+            processData: false,
+            contentType: false,
+            cache: false,
+            url : "api/v1/user/registAdd.do",
+            success : function(data) {
+               if (data.result == 'success') {
+                    alert('가입에 성공하였습니다. 로그인해주세요')
+                    location.href = 'login.do'
+                } else {
+                	alert(data.message);
+                }
+            },
+            error : function(request, status, error) {
+               alert("에러가 발생하였습니다. 다시 시도해주세요:");
+            }
+        })
+        
+    });
+
+
+  </script>
+</body>
+
+</html>

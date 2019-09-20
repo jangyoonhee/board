@@ -3,21 +3,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="dto.UserMapper">
+<mapper namespace="board.mapper.UserMapper">
 
-	<select id="selectUser" resultType="board.dto.UserDto">
+	<select id="selectUser" parameterType="board.dto.UserDto" resultType="board.dto.UserDto">
 		<![CDATA[
 			SELECT
-				board_idx,
-				title,
-				contents,
-				creator_id
+				email,
+				pwd
 			FROM
 				t_user
 			WHERE
-				email = #{boardIdx} 
-			AND 
-			 	 pwd = #{pwd}
+				email = #{email} 
 		]]>
     </select>
     
@@ -28,44 +24,40 @@
 				id, 
 				email, 
 				pwd,
-				image
+				user_name
 			) 
 			VALUES 
 			(
 				#{id}, 
 				#{email}, 
 				#{pwd}, 
-				#{image}			
+				#{userName}			
 			)
 		]]>
 	</insert>
     
-    <insert id="insertFileList" parameterType="board.board.dto.BoardFileDto">
+    <insert id="insertFileList" parameterType="board.dto.BoardFileDto">
 		<![CDATA[
 			INSERT INTO t_file
 			(
-				board_idx,
+				user_idx,
 				original_file_name,
 				stored_file_path,
-				file_size,
-				creator_id,
-				created_datetime
+				file_size
 			)
 			VALUES
 		]]>
 		<foreach collection="list" item="item" separator=",">
 			(
-				#{item.boardIdx},
+				#{item.userIdx},
 				#{item.originalFileName},
 				#{item.storedFilePath},
-				#{item.fileSize},
-				'admin',
-				NOW()
+				#{item.fileSize}
 			)
 		</foreach>
 	</insert>
 	
-	<select id="selectFileList" parameterType="int" resultType="board.board.dto.BoardFileDto">
+	<select id="selectFileList" parameterType="int" resultType="board.dto.BoardFileDto">
 		<![CDATA[
 			SELECT
 				idx,
@@ -80,7 +72,7 @@
 		]]>
 	</select>
     
-    <select id="selectFileInformation" parameterType="map" resultType="board.board.dto.BoardFileDto">
+    <select id="selectFileInformation" parameterType="map" resultType="board.dto.BoardFileDto">
 		<![CDATA[
 			SELECT
 				original_file_name,

@@ -1,10 +1,14 @@
 package board.service;
 
+import java.util.Map;
+
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import board.dto.UserDto;
 
 public interface UserService {
 	
-	UserDto selectUser(String email, String pwd) throws Exception;
+	Map<String,String> selectUser(UserDto user) throws Exception;
     
-	Integer insertUser(UserDto user) throws Exception;
+	void insertUser(UserDto user, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception;
 }

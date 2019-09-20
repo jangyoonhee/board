@@ -283,49 +283,6 @@
           
              <!-- 리스트 자리 -->
             <div id="groupContents">
-                 <div class="row" style="margin-left: 0px; margin-right: 0px;">
-                          <!-- TWITTER PANEL -->
-                          <div class="col-md-4 mb">
-                            <div class="twitter-panel pn">
-                              <i class="fa fa-twitter fa-4x"></i>
-                              <p>Dashio is here! Take a look and enjoy this new Bootstrap Dashboard theme.</p>
-                              <p class="user">@Alvrz_is</p>
-                            </div>
-                          </div>
-                          <!-- /col-md-4 -->
-                          <div class="col-md-4 mb">
-                            <!-- WHITE PANEL - TOP USER -->
-                            <div class="white-panel pn">
-                              <div class="white-header">
-                                <h5>TOP USER</h5>
-                              </div>
-                              <p><img src="img/ui-zac.jpg" class="img-circle" width="50"></p>
-                              <p><b>Zac Snider</b></p>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <p class="small mt">MEMBER SINCE</p>
-                                  <p>2012</p>
-                                </div>
-                                <div class="col-md-6">
-                                  <p class="small mt">TOTAL SPEND</p>
-                                  <p>$ 47,60</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <!-- /col-md-4 -->
-                          <div class="col-md-4 mb">
-                            <!-- INSTAGRAM PANEL -->
-                            <div class="instagram-panel pn">
-                              <i class="fa fa-instagram fa-4x"></i>
-                              <p>@THISISYOU<br/> 5 min. ago
-                              </p>
-                              <p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>
-                            </div>
-                          </div>
-                          <!-- /col-md-4 -->
-                        </div>
-                        <!-- /row -->
             </div>
 
 	      
@@ -432,64 +389,27 @@
             type : "GET",
             url : "api/board.do", 
             success : function(data) {
-                alert("success");
-                $('#groupContents').append('data');
+            	var boardTag = '';
+            	var rowidx = 0;
+            	var rowTag = '<div class="row" style="margin-left: 0px; margin-right: 0px;">';
+            	for( var i=1; i<= data.length; i++){
+            		var board = data[i-1];	
+            	 	boardTag += '<div class="col-md-4 mb">'+
+		                		    '<div class="instagram-panel pn"><i class="fa fa-instagram fa-4x"></i>'+
+		                      			'<p>'+ board.title + '</p>'+
+		                      			'<p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>'+
+		                    		'</div>'+
+	                  		    '</div>';
+	                  	
+            		if( i % 3 == 0 ){ rowTag.concat( boardTag, '</div>')}
+            	}
+            	
+                $('#groupContents').append(boardTag);
             },
             error : function(request, status, error) {
-            debugger;
                 alert("code:" + request.status + "\n" + "error:" + error);
-				debugger;
             }
-        })
-        
-        /* 리스트 동적으로 붙여야함
-        <div class="row" style="margin-left: 0px; margin-right: 0px;">
-              <!-- TWITTER PANEL -->
-              <div class="col-md-4 mb">
-                <div class="twitter-panel pn">
-                  <i class="fa fa-twitter fa-4x"></i>
-                  <p>Dashio is here! Take a look and enjoy this new Bootstrap Dashboard theme.</p>
-                  <p class="user">@Alvrz_is</p>
-                </div>
-              </div>
-              <!-- /col-md-4 -->
-              <class="col-md-4 mb">
-                <!-- WHITE PANEL - TOP USER -->
-                <div class="white-panel pn">
-                  <div class="white-header">
-                    <h5>TOP USER</h5>
-                  </div>
-                  <p><img src="img/ui-zac.jpg" class="img-circle" width="50"></p>
-                  <p><b>Zac Snider</b></p>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <p class="small mt">MEMBER SINCE</p>
-                      <p>2012</p>
-                    </div>
-                    <div class="col-md-6">
-                      <p class="small mt">TOTAL SPEND</p>
-                      <p>$ 47,60</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /col-md-4 -->
-              <div class="col-md-4 mb">
-                <!-- INSTAGRAM PANEL -->
-                <div class="instagram-panel pn">
-                  <i class="fa fa-instagram fa-4x"></i>
-                  <p>@THISISYOU<br/> 5 min. ago
-                  </p>
-                  <p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>
-                </div>
-              </div>
-              <!-- /col-md-4 -->
-            </div>
-            <!-- /row -->
-       
-        
-        */
-        
+        })  
     });
 
     function myNavFunction(id) {

@@ -8,9 +8,12 @@ public class BoardFileDto {
 	
 	private int boardIdx;
 	
+	private int userIdx;
+	
 	private String originalFileName;
 	
 	private String storedFilePath;
 	
 	private long fileSize;
+	
 }
