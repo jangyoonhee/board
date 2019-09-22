@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService; 
 	
+	@CrossOrigin("*")
 	@RequestMapping(value="/api/board.do", method=RequestMethod.GET)
 	public List<BoardDto> openBoardList() throws Exception{
         System.out.println("board.openBoardList");

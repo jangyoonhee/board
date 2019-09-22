@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ViewController {
 
+	
 	@RequestMapping(value="/login.do", method=RequestMethod.GET)
 	public String login() throws Exception{
 		return "login";

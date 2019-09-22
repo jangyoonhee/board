@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -25,6 +26,7 @@ public class UserController {
 	private UserService userService; 
 
     //회원 로그인      
+	@CrossOrigin("*")
 	@RequestMapping(value="/loginEnter.do",  method=RequestMethod.POST)
 	public Map<String,String> login( UserDto userDto ) throws Exception {
 		Map<String,String> result = userService.selectUser(userDto);
@@ -41,6 +43,7 @@ public class UserController {
 	}
 
     //회원가입
+	@CrossOrigin("*")
 	@RequestMapping(value="/registAdd.do", method=RequestMethod.POST)
 	public Map<String,String> registAdd(UserDto userDto, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception{
 		Map<String,String> result = userService.selectUser(userDto);
@@ -61,6 +64,7 @@ public class UserController {
 	}
 	
     //회원 정보 조회
+	@CrossOrigin("*")
 	@RequestMapping(value="{userid}",method=RequestMethod.GET)
 	public Map<String,String> getUserID( HttpServletRequest req) throws Exception{
         Map<String,String> rtnMap = new HashMap<String,String>();
