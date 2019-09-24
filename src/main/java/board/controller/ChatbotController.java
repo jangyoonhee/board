@@ -25,12 +25,14 @@ public class ChatbotController {
 	}
 	
 	@RequestMapping(value="/keyboard/btnClk.do")
-	public SkillResponse btnClk( ) {
+	public SkillResponse btnClk(@RequestBody SkillPa ) {
 		System.out.println("btnClk====");
 		SkillResponse skillResponse = new SkillResponse();
 		SkillTemplate skillTemplate = new SkillTemplate();
 		BasicCard basicCard = new BasicCard();
 		basicCard.setDescrition("스킬데이터가 드디어 되는가 ");
+        Button button = new Button( "챗봇연결" , "blockID");
+        basicCard.add( button );
 		skillTemplate.add( "basicCard", basicCard);
 		skillResponse.setTemplate(skillTemplate);
 		System.out.println("skillResponse-------");
