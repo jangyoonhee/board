@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <title>Dashio - Bootstrap Admin Template</title>
+
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!--external css-->
+  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.css">
+  <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet">
+  <script src="lib/chart-master/Chart.js"></script>
+  <script src="js/board.js"></script>
+  <!-- =======================================================
+    Template Name: Dashio
+    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
+    Author: TemplateMag.com
+    License: https://templatemag.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+  <section id="container">
+    <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+      <div class="sidebar-toggle-box">
+        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+      </div>
+      <!--logo start-->
+      <a href="index.html" class="logo"><b>DASH<span>IO</span></b></a>
+      <!--logo end-->
+      <div class="nav notify-row" id="top_menu">
+        <!--  notification start -->
+        <ul class="nav top-menu">
+          <!-- settings start -->
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+              <i class="fa fa-tasks"></i>
+              <span class="badge bg-theme">4</span>
+              </a>
+            <ul class="dropdown-menu extended tasks-bar">
+              <div class="notify-arrow notify-arrow-green"></div>
+              <li>
+                <p class="green">You have 4 pending tasks</p>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <div class="task-info">
+                    <div class="desc">Dashio Admin Panel</div>
+                    <div class="percent">40%</div>
+                  </div>
+                  <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                      <span class="sr-only">40% Complete (success)</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <div class="task-info">
+                    <div class="desc">Database Update</div>
+                    <div class="percent">60%</div>
+                  </div>
+                  <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                      <span class="sr-only">60% Complete (warning)</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <div class="task-info">
+                    <div class="desc">Product Development</div>
+                    <div class="percent">80%</div>
+                  </div>
+                  <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                      <span class="sr-only">80% Complete</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <div class="task-info">
+                    <div class="desc">Payments Sent</div>
+                    <div class="percent">70%</div>
+                  </div>
+                  <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                      <span class="sr-only">70% Complete (Important)</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="external">
+                <a href="#">See All Tasks</a>
+              </li>
+            </ul>
+          </li>
+          <!-- settings end -->
+          <!-- inbox dropdown start-->
+          <li id="header_inbox_bar" class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+              <i class="fa fa-envelope-o"></i>
+              <span class="badge bg-theme">5</span>
+              </a>
+            <ul class="dropdown-menu extended inbox">
+              <div class="notify-arrow notify-arrow-green"></div>
+              <li>
+                <p class="green">You have 5 new messages</p>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="photo"><img alt="avatar" src="img/ui-zac.jpg"></span>
+                  <span class="subject">
+                  <span class="from">Zac Snider</span>
+                  <span class="time">Just now</span>
+                  </span>
+                  <span class="message">
+                  Hi mate, how is everything?
+                  </span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="photo"><img alt="avatar" src="img/ui-divya.jpg"></span>
+                  <span class="subject">
+                  <span class="from">Divya Manian</span>
+                  <span class="time">40 mins.</span>
+                  </span>
+                  <span class="message">
+                  Hi, I need your help with this.
+                  </span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="photo"><img alt="avatar" src="img/ui-danro.jpg"></span>
+                  <span class="subject">
+                  <span class="from">Dan Rogers</span>
+                  <span class="time">2 hrs.</span>
+                  </span>
+                  <span class="message">
+                  Love your new Dashboard.
+                  </span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="photo"><img alt="avatar" src="img/ui-sherman.jpg"></span>
+                  <span class="subject">
+                  <span class="from">Dj Sherman</span>
+                  <span class="time">4 hrs.</span>
+                  </span>
+                  <span class="message">
+                  Please, answer asap.
+                  </span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">See all messages</a>
+              </li>
+            </ul>
+          </li>
+          <!-- inbox dropdown end -->
+          <!-- notification dropdown start-->
+          <li id="header_notification_bar" class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+              <i class="fa fa-bell-o"></i>
+              <span class="badge bg-warning">7</span>
+              </a>
+            <ul class="dropdown-menu extended notification">
+              <div class="notify-arrow notify-arrow-yellow"></div>
+              <li>
+                <p class="yellow">You have 7 new notifications</p>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                  Server Overloaded.
+                  <span class="small italic">4 mins.</span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="label label-warning"><i class="fa fa-bell"></i></span>
+                  Memory #2 Not Responding.
+                  <span class="small italic">30 mins.</span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                  Disk Space Reached 85%.
+                  <span class="small italic">2 hrs.</span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="label label-success"><i class="fa fa-plus"></i></span>
+                  New User Registered.
+                  <span class="small italic">3 hrs.</span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">See all notifications</a>
+              </li>
+            </ul>
+          </li>
+          <!-- notification dropdown end -->
+        </ul>
+        <!--  notification end -->
+      </div>
+      <div class="top-menu">
+        <ul class="nav pull-right top-menu">
+          <li><a class="logout" href="login.html">Logout</a></li>
+        </ul>
+      </div>
+    </header>
+    <!--header end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered"><a href="profile.html"><img src="img/ui-sam.jpg" class="img-circle" width="80"></a></p>
+          <h5 class="centered">Sam Soffes</h5>
+          <li class="mt">
+            <a class="active" href="index.html">
+			  <i class="fa fa-cogs"></i>
+              <span>설정</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              
+			  <i class="fa fa-dashboard"></i>
+              <span>그룹 리스트</span>
+              </a>
+            <ul class="sub">
+              <li><a href="index.html">전체 그룹</a></li>
+              <li><a href="groupMain.html">나의 그룹</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+    <!--sidebar end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper site-min-height">
+		
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="row content-panel">
+              <div class="col-md-4 profile-text mt mb centered">
+                <div class="right-divider hidden-sm hidden-xs">
+                  <h4>1922</h4>
+                  <h6>FOLLOWERS</h6>
+                  <h4>290</h4>
+                  <h6>FOLLOWING</h6>
+                  <h4>$ 13,980</h4>
+                  <h6>MONTHLY EARNINGS</h6>
+                </div>
+              </div>
+              <!-- /col-md-4 -->
+              <div class="col-md-4 profile-text">
+                <h3>Sam Soffes</h3>
+                <h6>Main Administrator</h6>
+                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
+                <br>
+                <p><button class="btn btn-theme"><i class="fa fa-envelope"></i> Send Message</button></p>
+              </div>
+              <!-- /col-md-4 -->
+              <div class="col-md-4 centered">
+                <div class="profile-pic">
+                  <p><img src="img/ui-sam.jpg" class="img-circle"></p>
+                  <p>
+                    <button class="btn btn-theme"><i class="fa fa-check"></i> Follow</button>
+                    <button class="btn btn-theme02">Add</button>
+                  </p>
+                </div>
+              </div>
+              <!-- /col-md-4 -->
+            </div>
+            <!-- /row -->
+          </div>
+		  
+		  
+          <!-- /col-lg-12 -->
+          <div class="col-lg-12 mt">
+            <div class="row content-panel">
+			
+              <div class="panel-heading">
+                <ul class="nav nav-tabs nav-justified">
+				  <li class="active">
+                    <a data-toggle="tab" href="#edit">자유게시판</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#overview">모임</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- /panel-heading -->
+              <div class="panel-body">
+                <div class="tab-content">
+                  <div id="overview" class="tab-pane active">
+					<div class="row">
+                      <div class="col-lg-8 col-lg-offset-2 detailed">
+                        <h4 class="mb">모임</h4>
+							<div>
+								<div class="row mt">
+									  <div class="col-md-12">
+										<div class="content-panel">
+										  <table class="table table-striped table-advance table-hover">
+											<hr>
+											<thead>
+											  <tr>
+												<th><i class="fa fa-bullhorn"></i> Company</th>
+												<th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
+												<th><i class="fa fa-bookmark"></i> Profit</th>
+												<th><i class=" fa fa-edit"></i> Status</th>
+												<th></th>
+											  </tr>
+											</thead>
+											<tbody>
+											  <tr>
+												<td>
+												  <a href="basic_table.html#">Company Ltd</a>
+												</td>
+												<td class="hidden-phone">Lorem Ipsum dolor</td>
+												<td>12000.00$ </td>
+												<td><span class="label label-info label-mini">Due</span></td>
+												<td>
+												  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+												  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+												  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+												</td>
+											  </tr>
+											  <tr>
+												<td>
+												  <a href="basic_table.html#">
+													Dashio co
+													</a>
+												</td>
+												<td class="hidden-phone">Lorem Ipsum dolor</td>
+												<td>17900.00$ </td>
+												<td><span class="label label-warning label-mini">Due</span></td>
+												<td>
+												  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+												  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+												  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+												</td>
+											  </tr>
+											  <tr>
+												<td>
+												  <a href="basic_table.html#">
+													Another Co
+													</a>
+												</td>
+												<td class="hidden-phone">Lorem Ipsum dolor</td>
+												<td>14400.00$ </td>
+												<td><span class="label label-success label-mini">Paid</span></td>
+												<td>
+												  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+												  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+												  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+												</td>
+											  </tr>
+											  <tr>
+												<td>
+												  <a href="basic_table.html#">Dashio ext</a>
+												</td>
+												<td class="hidden-phone">Lorem Ipsum dolor</td>
+												<td>22000.50$ </td>
+												<td><span class="label label-success label-mini">Paid</span></td>
+												<td>
+												  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+												  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+												  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+												</td>
+											  </tr>
+											  <tr>
+												<td>
+												  <a href="basic_table.html#">Total Ltd</a>
+												</td>
+												<td class="hidden-phone">Lorem Ipsum dolor</td>
+												<td>12120.00$ </td>
+												<td><span class="label label-warning label-mini">Due</span></td>
+												<td>
+												  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+												  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+												  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+												</td>
+											  </tr>
+											</tbody>
+										  </table>
+										</div>
+										<!-- /content-panel -->
+									  </div>
+									  <!-- /col-md-12 -->
+									</div>
+									<!-- /row -->
+							</div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <!-- /tab-pane -->
+                  
+                  <div id="edit" class="tab-pane">
+                    <div class="row">
+                      <div class="col-lg-8 col-lg-offset-2 detailed">
+                        <h4 class="mb">자유게시판</h4>
+						 <h3><i class="fa fa-angle-right"></i> Advanced Table Example</h3>
+								<div class="row mb">
+								  <!-- page start-->
+								  <div class="content-panel">
+									<div class="adv-table">
+									  <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+										<thead>
+										  <tr>
+											<th>Rendering engine</th>
+											<th>Browser</th>
+											<th class="hidden-phone">title</th>
+											<th class="hidden-phone">title</th>
+											<th class="hidden-phone">creator</th>
+										  </tr>
+										</thead>
+										<tbody id="boardContents">
+										  
+										</tbody>
+									  </table>
+									</div>
+								  </div>
+								  <!-- page end-->
+                                <button id="boardWriteBtn" type="button" class="btn btn-theme02"><i class="fa fa-check"></i> write</button>
+								</div>
+        <!-- /row -->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /tab-pane -->
+                </div>
+                <!-- /tab-content -->
+              </div>
+              <!-- /panel-body -->
+            </div>
+            <!-- /col-lg-12 -->
+          </div>
+          <!-- /row -->
+        </div>
+        <!-- /container -->
+      </section>
+      <!-- /wrapper -->
+    </section>
+    <!--main content end-->
+    <!--footer start-->
+    <footer class="site-footer">
+      <div class="text-center">
+        <p>
+          &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
+        </p>
+        <div class="credits">
+          <!--
+            You are NOT allowed to delete the credit link to TemplateMag with free version.
+            You can delete the credit link only if you bought the pro version.
+            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
+            Licensing information: https://templatemag.com/license/
+          -->
+          Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
+        </div>
+        <a href="index.html#" class="go-top">
+          <i class="fa fa-angle-up"></i>
+          </a>
+      </div>
+    </footer>
+    <!--footer end-->
+  </section>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="lib/jquery/jquery.min.js"></script>
+
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="lib/jquery.scrollTo.min.js"></script>
+  <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="lib/jquery.sparkline.js"></script>
+  <!--common script for all pages-->
+  <script src="lib/common-scripts.js"></script>
+  <script type="text/javascript" src="lib/gritter/js/jquery.gritter.js"></script>
+  <script type="text/javascript" src="lib/gritter-conf.js"></script>
+  <!--script for this page-->
+  <script src="lib/sparkline-chart.js"></script>
+  <script src="lib/zabuto_calendar.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var unique_id = $.gritter.add({
+        // (string | mandatory) the heading of the notification
+        title: 'Welcome to Dashio!',
+        // (string | mandatory) the text inside the notification
+        text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Developed by <a href="http://alvarez.is" target="_blank" style="color:#4ECDC4">Alvarez.is</a>.',
+        // (string | optional) the image to display on the left
+        image: 'img/ui-sam.jpg',
+        // (bool | optional) if you want it to fade out on its own or just sit there
+        sticky: false,
+        // (int | optional) the time you want it to be alive for before fading out
+        time: 8000,
+        // (string | optional) the class name you want to apply to that specific message
+        class_name: 'my-sticky-class'
+      });
+
+      return false;
+    });
+  </script>
+  <script type="application/javascript">
+    $(document).ready(function() {
+
+         //리스트 값 뿌려주기
+          $.ajax({
+            type : "GET",
+            url : "https://dbsl.ga:8070/api/board.do", 
+            success : function(data) {
+            	var boardTag = '';
+            	var rowidx = 0;
+                
+            	for( var i=0; i< data.length; i++){
+            		var board = data[i-1];	
+            	 	boardTag += '<tr class="gradeX">'
+											'<td>'+ board.title + '</td>'+
+											'<td>'+ board.title + '</td>'+
+											'<td '+ board.title + '</td> </tr>';
+            	}
+            	
+                $('#boardContents').append(boardTag);
+            },
+            error : function(request, status, error) {
+                alert("code:" + request.status + "\n" + "error:" + error);
+            }
+        })  
+    });
+
+    $('#boardWriteBtn').click(function() { 
+    	event.preventDefault();
+        openLayer( $('#boardWriteContents') );
+    });
+      
+      
+    function myNavFunction(id) {
+      $("#date-popover").hide();
+      var nav = $("#" + id).data("navigation");
+      var to = $("#" + id).data("to");
+      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+  </script>
+ 
+  
+  <div id="boardWriteContents" style="display:none">
+    <div id="login-page">
+    <div class="container">
+      <div class="row mt">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="margin-top:10%">
+            <h4 class="title">create account</h4>
+            <div id="message"></div>
+ 			<form id="frm" name="frm" method="post" action="/api/board/write.do" enctype="multipart/form-data">
+		    	<table class="board_detail">
+		    		<tr>
+		    			<td>제목</td>
+		    			<td><input type="text" id="title" name="title"/></td>
+		    		</tr>
+		    		<tr>
+		    			<td colspan="2">
+			    			<textarea id="contents" name="contents"></textarea>
+		    			</td>
+		    		</tr>
+		    	</table>
+		    	<input type="file" id="files" name="files" multiple="multiple">
+		    	<input type="submit" id="submit" value="저장" class="btn">
+	    	</form>          
+	    </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6" style="margin-top:10%">
+            <h4 class="title">Contact Details</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <ul class="contact_details">
+              <li><i class="fa fa-envelope-o"></i> info@yoursite.com</li>
+              <li><i class="fa fa-phone-square"></i> +34 5565 6555</li>
+              <li><i class="fa fa-home"></i> Some Fine Address, 887, Madrid, Spain.</li>
+            </ul>
+            <!-- contact_details -->
+          </div>
+        </div>
+    </div>
+  </div>     
+  </div> 
+ 
+</body>
+
+</html>
