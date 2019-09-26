@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board.mapper.GroupMapper">
+
+
+    //그룹 삭제
+	public Map<String,String> deleteGroup( int groupIdx ) throws Exception;
+    
+    //그룹 가입
+	public Map<String,String> enterGroup( int groupIdx , int uesrIdx ) throws Exception;
+    
+    //그룹 탈퇴
+	public Map<String,String> secedeGroup( int groupIdx , int uesrIdx ) throws Exception;
+    
+	<select id="selectGroup" resultType="board.dto.GroupDto">
+		<![CDATA[
+			SELECT
+				groupIdx,
+				createId,
+                name,
+                count,
+				DATE_FORMAT(createdDatetime, '%Y.%m.%d %H:%i:%s') AS createdDatetime
+			FROM
+				t_group
+			WHERE
+				group_idx = #{groupIdx}
+		]]>
+	</select>
+	
+	<insert id="insertGroup" parameterType="board.dto.GroupDto" useGeneratedKeys="true" keyProperty="groupIdx">
+		<![CDATA[
+			INSERT INTO t_group
+			(
+				createId,
+				fastJoin,
+                name,
+                introdution,
+                createdDatetime,
+                maxCount
+			) 
+			VALUES 
+			(
+				#{create_id}, 
+				#{'0'}, 
+                #{name}, 
+                #{introdution}, 
+				NOW(), 
+				#{maxCount}			
+			)
+		]]>
+	</insert>
+	
+	<update id="updateGroup" parameterType="board.dto.GroupDto">
+		<![CDATA[
+			UPDATE t_group SET
+	            createId = #{create_id}, 
+				fastJoin = '0', 
+                name = #{name}, 
+                introdution = #{introdution}
+			WHERE 
+				group_idx = #{groupIdx}
+		]]>
+	</update>
+	
+	<insert id="enterGroup" parameterType="board.dto.UserRelationGroupDto">
+        <![CDATA[
+			INSERT INTO t_userRelationGroup
+			(
+				group_idx,
+				user_idx,
+                enter_date_time
+			) 
+			VALUES 
+			(
+				#{groupIdx}, 
+				#{userIdx}, 
+				NOW()	
+			)
+		]]>
+	</insert>
+	
+	<delete id="secedeGroup" parameterType="board.dto.UserRelationGroupDto">
+		   <![CDATA[
+			DELETE FROM t_userRelationGroup
+            WHERE
+				group_idx = #{groupIdx}
+            AND
+				user_idx = #{userIdx}
+		]]>
+	</delete>
+	
+</mapper>

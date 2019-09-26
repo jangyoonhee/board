@@ -23,7 +23,7 @@
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
   <script src="lib/chart-master/Chart.js"></script>
-
+  <script src="js/board.js"></script>
   <!-- =======================================================
     Template Name: Dashio
     Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
@@ -260,8 +260,8 @@
               <span>그룹 리스트</span>
               </a>
             <ul class="sub">
-              <li><a href="grids.html">전체 그룹</a></li>
-              <li><a href="calendar.html">나의 그룹</a></li>
+              <li><a href="index.html">전체 그룹</a></li>
+              <li><a href="groupMain.html">나의 그룹</a></li>
             </ul>
           </li>
         </ul>
@@ -274,23 +274,211 @@
         *********************************************************************************************************************************************************** -->
     <!--main content start-->
     <section id="main-content">
-      <section class="wrapper">
-	  <!-- ???? -->
-	  
-	        <div class="border-head" style="margin-top:15px">
-				<h3>전체 그룹 리스트</h3>
-			</div>
-          
-             <!-- 리스트 자리 -->
-            <div id="groupContents">
+        <section class="wrapper site-min-height">
+		
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="row content-panel">
+              <div class="col-md-4 profile-text mt mb centered">
+                <div class="right-divider hidden-sm hidden-xs">
+                  <h4>1922</h4>
+                  <h6>FOLLOWERS</h6>
+                  <h4>290</h4>
+                  <h6>FOLLOWING</h6>
+                  <h4>$ 13,980</h4>
+                  <h6>MONTHLY EARNINGS</h6>
+                </div>
+              </div>
+              <!-- /col-md-4 -->
+              <div class="col-md-4 profile-text">
+                <h3>Sam Soffes</h3>
+                <h6>Main Administrator</h6>
+                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
+                <br>
+                <p><button class="btn btn-theme"><i class="fa fa-envelope"></i> Send Message</button></p>
+              </div>
+              <!-- /col-md-4 -->
+              <div class="col-md-4 centered">
+                <div class="profile-pic">
+                  <p><img src="img/ui-sam.jpg" class="img-circle"></p>
+                  <p>
+                    <button class="btn btn-theme"><i class="fa fa-check"></i> Follow</button>
+                    <button class="btn btn-theme02">Add</button>
+                  </p>
+                </div>
+              </div>
+              <!-- /col-md-4 -->
             </div>
-
-	      
+            <!-- /row -->
+          </div>
+		  
+		  
+          <!-- /col-lg-12 -->
+          <div class="col-lg-12 mt">
+            <div class="row content-panel">
 			
-	
-        </div>
+              <div class="panel-heading">
+                <ul class="nav nav-tabs nav-justified">
+				  <li class="active">
+                    <a data-toggle="tab" href="#edit">자유게시판</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#overview">모임</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- /panel-heading -->
+              <div class="panel-body">
+                <div class="tab-content">
+                  <div id="overview" class="tab-pane active">
+					<div class="row">
+                      <div class="col-lg-8 col-lg-offset-2 detailed">
+                        <h4 class="mb">모임</h4>
+							<div>
+								<div class="row mt">
+									  <div class="col-md-12">
+										<div class="content-panel">
+										  <table class="table table-striped table-advance table-hover">
+											<hr>
+											<thead>
+											  <tr>
+												<th><i class="fa fa-bullhorn"></i> Company</th>
+												<th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
+												<th><i class="fa fa-bookmark"></i> Profit</th>
+												<th><i class=" fa fa-edit"></i> Status</th>
+												<th></th>
+											  </tr>
+											</thead>
+											<tbody>
+											  <tr>
+												<td>
+												  <a href="basic_table.html#">Company Ltd</a>
+												</td>
+												<td class="hidden-phone">Lorem Ipsum dolor</td>
+												<td>12000.00$ </td>
+												<td><span class="label label-info label-mini">Due</span></td>
+												<td>
+												  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+												  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+												  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+												</td>
+											  </tr>
+											  <tr>
+												<td>
+												  <a href="basic_table.html#">
+													Dashio co
+													</a>
+												</td>
+												<td class="hidden-phone">Lorem Ipsum dolor</td>
+												<td>17900.00$ </td>
+												<td><span class="label label-warning label-mini">Due</span></td>
+												<td>
+												  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+												  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+												  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+												</td>
+											  </tr>
+											  <tr>
+												<td>
+												  <a href="basic_table.html#">
+													Another Co
+													</a>
+												</td>
+												<td class="hidden-phone">Lorem Ipsum dolor</td>
+												<td>14400.00$ </td>
+												<td><span class="label label-success label-mini">Paid</span></td>
+												<td>
+												  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+												  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+												  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+												</td>
+											  </tr>
+											  <tr>
+												<td>
+												  <a href="basic_table.html#">Dashio ext</a>
+												</td>
+												<td class="hidden-phone">Lorem Ipsum dolor</td>
+												<td>22000.50$ </td>
+												<td><span class="label label-success label-mini">Paid</span></td>
+												<td>
+												  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+												  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+												  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+												</td>
+											  </tr>
+											  <tr>
+												<td>
+												  <a href="basic_table.html#">Total Ltd</a>
+												</td>
+												<td class="hidden-phone">Lorem Ipsum dolor</td>
+												<td>12120.00$ </td>
+												<td><span class="label label-warning label-mini">Due</span></td>
+												<td>
+												  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+												  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+												  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+												</td>
+											  </tr>
+											</tbody>
+										  </table>
+										</div>
+										<!-- /content-panel -->
+									  </div>
+									  <!-- /col-md-12 -->
+									</div>
+									<!-- /row -->
+							</div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <!-- /tab-pane -->
+                  
+                  <div id="edit" class="tab-pane">
+                    <div class="row">
+                      <div class="col-lg-8 col-lg-offset-2 detailed">
+                        <h4 class="mb">자유게시판</h4>
+						 <h3><i class="fa fa-angle-right"></i> Advanced Table Example</h3>
+								<div class="row mb">
+								  <!-- page start-->
+								  <div class="content-panel">
+									<div class="adv-table">
+									  <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+										<thead>
+										  <tr>
+											<th>Rendering engine</th>
+											<th>Browser</th>
+											<th class="hidden-phone">title</th>
+											<th class="hidden-phone">title</th>
+											<th class="hidden-phone">creator</th>
+										  </tr>
+										</thead>
+										<tbody id="boardContents">
+										  
+										</tbody>
+									  </table>
+									</div>
+								  </div>
+								  <!-- page end-->
+                                <button id="boardWriteBtn" type="button" class="btn btn-theme02"><i class="fa fa-check"></i> write</button>
+								</div>
         <!-- /row -->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /tab-pane -->
+                </div>
+                <!-- /tab-content -->
+              </div>
+              <!-- /panel-body -->
+            </div>
+            <!-- /col-lg-12 -->
+          </div>
+          <!-- /row -->
+        </div>
+        <!-- /container -->
       </section>
+      <!-- /wrapper -->
     </section>
     <!--main content end-->
     <!--footer start-->
@@ -352,60 +540,24 @@
   </script>
   <script type="application/javascript">
     $(document).ready(function() {
-      $("#date-popover").popover({
-        html: true,
-        trigger: "manual"
-      });
-      $("#date-popover").hide();
-      $("#date-popover").click(function(e) {
-        $(this).hide();
-      });
 
-      $("#my-calendar").zabuto_calendar({
-        action: function() {
-          return myDateFunction(this.id, false);
-        },
-        action_nav: function() {
-          return myNavFunction(this.id);
-        },
-        ajax: {
-          url: "show_data.php?action=1",
-          modal: true
-        },
-        legend: [{
-            type: "text",
-            label: "Special event",
-            badge: "00"
-          },
-          {
-            type: "block",
-            label: "Regular event",
-          }
-        ]
-      });
-        
          //리스트 값 뿌려주기
-        //test
           $.ajax({
             type : "GET",
-            url : "api/board.do", 
+            url : "https://dbsl.ga:8070/api/board.do", 
             success : function(data) {
             	var boardTag = '';
             	var rowidx = 0;
-            	var rowTag = '<div class="row" style="margin-left: 0px; margin-right: 0px;">';
-            	for( var i=1; i<= data.length; i++){
+                
+            	for( var i=0; i< data.length; i++){
             		var board = data[i-1];	
-            	 	boardTag += '<div class="col-md-4 mb">'+
-		                		    '<div class="instagram-panel pn"><i class="fa fa-instagram fa-4x"></i>'+
-		                      			'<p>'+ board.title + '</p>'+
-		                      			'<p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>'+
-		                    		'</div>'+
-	                  		    '</div>';
-	                  	
-            		if( i % 3 == 0 ){ rowTag.concat( boardTag, '</div>')}
+            	 	boardTag += '<tr class="gradeX">'
+											'<td>'+ board.title + '</td>'+
+											'<td>'+ board.title + '</td>'+
+											'<td '+ board.title + '</td> </tr>';
             	}
             	
-                $('#groupContents').append(boardTag);
+                $('#boardContents').append(boardTag);
             },
             error : function(request, status, error) {
                 alert("code:" + request.status + "\n" + "error:" + error);
@@ -413,6 +565,24 @@
         })  
     });
 
+    $('#boardWriteBtn').click(function() { 
+    	event.preventDefault();
+        openLayer( $('#boardWriteContents') );
+    });
+      
+      
+    function openLayer( element, parant ){
+        if( parent && parent != '' ){
+            element.appendTo(parent);
+        }  
+    
+        element.show();
+    }
+
+    function closeLayer( element ){
+        $(element).hide();
+    }
+      
     function myNavFunction(id) {
       $("#date-popover").hide();
       var nav = $("#" + id).data("navigation");
@@ -420,6 +590,47 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
   </script>
+ 
+  
+  <div id="boardWriteContents" style="display:none">
+    <div id="login-page">
+    <div class="container">
+      <div class="row mt">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="margin-top:10%">
+            <h4 class="title">create account</h4>
+            <div id="message"></div>
+ 			<form id="frm" name="frm" method="post" action="/api/board/write.do" enctype="multipart/form-data">
+		    	<table class="board_detail">
+		    		<tr>
+		    			<td>제목</td>
+		    			<td><input type="text" id="title" name="title"/></td>
+		    		</tr>
+		    		<tr>
+		    			<td colspan="2">
+			    			<textarea id="contents" name="contents"></textarea>
+		    			</td>
+		    		</tr>
+		    	</table>
+		    	<input type="file" id="files" name="files" multiple="multiple">
+		    	<input type="submit" id="submit" value="저장" class="btn">
+	    	</form>          
+	    </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6" style="margin-top:10%">
+            <h4 class="title">Contact Details</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <ul class="contact_details">
+              <li><i class="fa fa-envelope-o"></i> info@yoursite.com</li>
+              <li><i class="fa fa-phone-square"></i> +34 5565 6555</li>
+              <li><i class="fa fa-home"></i> Some Fine Address, 887, Madrid, Spain.</li>
+            </ul>
+            <!-- contact_details -->
+          </div>
+        </div>
+    </div>
+  </div>     
+  </div> 
+ 
 </body>
 
 </html>

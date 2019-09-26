@@ -5,16 +5,18 @@ import java.util.Map;
 public class DataDefine {
 
 	private static DataDefine instance;
+    
+	//USER STATE 
+	private String USER_LOGIN_STATE_NONE_EMAIL = "01"; //이메일주소없음
 	
-	public String USER_LOGIN_STATE_NONE_EMAIL = "01"; //이메일주소없음
+	private String USER_LOGIN_STATE_WRONG_PWD= "02"; //패스워드 틀림
 	
-	public String USER_LOGIN_STATE_WRONG_PWD= "02"; //패스워드 틀림
+	private String USER_LOGIN_STATE_SUCCESS= "03"; //로그인 성공
 	
-	public String USER_LOGIN_STATE_SUCCESS= "03"; //로그인 성공
-	
-	public String USER_LOGIN_STATE_EXIST_EMAIL = "04"; //존재하는 이메일
+	private String USER_LOGIN_STATE_EXIST_EMAIL = "04"; //존재하는 이메일
 	
 	private Map<String, String> messageMap = new HashMap<String, String>();
+
 	
 	public static DataDefine getInstance() {
 		if( instance == null ) {
@@ -25,6 +27,7 @@ public class DataDefine {
 	
 	private DataDefine() {
 		makeMessageMapData();
+        makeCategoryMapData();
 	}
 	
 	private void makeMessageMapData() {
@@ -38,4 +41,5 @@ public class DataDefine {
 		return messageMap.get(key);
 	}
 	
+ 
 }
