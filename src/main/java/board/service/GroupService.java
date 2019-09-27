@@ -21,8 +21,8 @@ public interface GroupService {
 	public Map<String,String> deleteGroup( GroupDto groupDto );
     
     //그룹 가입
-	public Map<String,String> enterGroup( GroupDto groupDto );
+	public Map<String,String> enterGroup( UserRelationGroupDto userRelationGroupDto );
     
     //그룹 탈퇴
-	public Map<String,String> secedeGroup( GroupDto groupDto );
+	public Map<String,String> secedeGroup( UserRelationGroupDto userRelationGroupDto );
 }

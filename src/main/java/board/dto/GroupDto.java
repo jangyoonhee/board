@@ -17,9 +17,11 @@ public class GroupDto {
 	
 	private String createdDatetime;
 
-    private String name;
+    private String groupName;
     
-    private int maxCount;
+    private int peopleMaxCount;
+    
+    private String category;
     
 	private List<BoardFileDto> fileList;
 	

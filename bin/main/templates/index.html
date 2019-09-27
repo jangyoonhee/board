@@ -278,7 +278,7 @@
 	  <!-- ???? -->
 	  
 	        <div class="border-head" style="margin-top:15px">
-				<h3>전체 그룹 리스트</h3>
+				<h3>전체 그룹 리스트</h3><button id="createGroupBtn" type="button" class="btn btn-round btn-primary pull-right">내 그룹 만들기</button>
 			</div>
           
              <!-- 리스트 자리 -->
@@ -395,12 +395,22 @@
             	var rowTag = '<div class="row" style="margin-left: 0px; margin-right: 0px;">';
             	for( var i=1; i<= data.length; i++){
             		var board = data[i-1];	
-            	 	boardTag += '<div class="col-md-4 mb">'+
-		                		    '<div class="instagram-panel pn"><i class="fa fa-instagram fa-4x"></i>'+
-		                      			'<p>'+ board.title + '</p>'+
-		                      			'<p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>'+
-		                    		'</div>'+
-	                  		    '</div>';
+            	 	boardTag += '<div class="col-lg-4 col-md-4 col-sm-4 mb">'+
+                                    '<div class="content-panel pn">'+
+                                        '<div id="profile-01"><h3>image</h3></div>'+
+                                    '<div class="profile-01 centered">'+
+                                        '<p>'+
+                                            group.groupName+ 
+                                        '</p>'+
+                                    '</div>'+
+                                    '<div class="centered">'+
+                                        '<h6><i class="fa fa-envelope"></i><br/>'+
+                                           + group.introdution + 
+                                        '</h6>'+
+                                      '</div>'+
+                                    '</div>'+
+                                  '</div>';
+		                      			
 	                  	
             		if( i % 3 == 0 ){ rowTag.concat( boardTag, '</div>')}
             	}
@@ -411,7 +421,13 @@
                 alert("code:" + request.status + "\n" + "error:" + error);
             }
         })  
-    });
+        
+        
+        $('#createGroupBtn').click(function() { 
+             location.href = 'createGroup.html';
+        });
+        
+   
 
     function myNavFunction(id) {
       $("#date-popover").hide();
@@ -420,6 +436,7 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
   </script>
+   
 </body>
 
 </html>

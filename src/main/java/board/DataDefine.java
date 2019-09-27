@@ -16,7 +16,7 @@ public class DataDefine {
 	private String USER_LOGIN_STATE_EXIST_EMAIL = "04"; //존재하는 이메일
 	
 	private Map<String, String> messageMap = new HashMap<String, String>();
-
+ 
 	
 	public static DataDefine getInstance() {
 		if( instance == null ) {
