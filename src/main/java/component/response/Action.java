@@ -1,5 +1,11 @@
 package component.response;
 
+import java.io.Serializable;
+import java.util.Map;
+
+import lombok.Data;
+
+@Data
 public class Action implements Serializable{
     
     private String id;

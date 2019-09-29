@@ -36,13 +36,13 @@ public class SkillTemplate implements Serializable {
 	}
     
     public void adds(QuickReply quickReplies ){
-        for( QuickReply quickReply : quickReplies ){
+       /* for( QuickReply quickReply : quickReplies ){
             add(quickReply);
-        }
+        }*/
 	}
     
     @Override
     public String toString() {
-        return "SkillTemplate [outputs= " + outputs "]";
+        return "SkillTemplate [outputs= " + outputs + "]";
     }
 }

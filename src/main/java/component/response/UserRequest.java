@@ -1,6 +1,11 @@
 package component.response;
 
-public class UserRequest implements serializable{
+import java.io.Serializable;
+
+import lombok.Data;
+
+@Data
+public class UserRequest implements Serializable{
     
     private String timezone;
     private Block block;

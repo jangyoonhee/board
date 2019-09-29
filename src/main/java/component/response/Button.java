@@ -1,5 +1,9 @@
 package component.response;
 
+import java.util.Map;
+import lombok.Data;
+
+@Data
 public class Button {
     
     private final String label;

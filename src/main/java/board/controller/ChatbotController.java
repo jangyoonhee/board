@@ -1,5 +1,8 @@
 package board.controller;
 
+import java.awt.Button;
+
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import component.response.BasicCard;
 import component.response.SimpleText;
+import component.response.SkillPalyload;
 import component.response.SkillResponse;
 import component.response.SkillTemplate;
 
@@ -25,9 +29,9 @@ public class ChatbotController {
 	}
 	
 	@RequestMapping(value="/keyboard/btnClk.do")
-	public SkillResponse btnClk(@RequestBody SkillPa ) {
+	public SkillResponse btnClk(@RequestBody SkillPalyload skillPalyload ) {
 		System.out.println("btnClk====");
-		SkillResponse skillResponse = new SkillResponse();
+		SkillResponse skillResponse = new SkillResponse("1.0");
 		SkillTemplate skillTemplate = new SkillTemplate();
 		BasicCard basicCard = new BasicCard();
 		basicCard.setDescrition("스킬데이터가 드디어 되는가 ");

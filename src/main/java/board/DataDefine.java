@@ -27,7 +27,6 @@ public class DataDefine {
 	
 	private DataDefine() {
 		makeMessageMapData();
-        makeCategoryMapData();
 	}
 	
 	private void makeMessageMapData() {

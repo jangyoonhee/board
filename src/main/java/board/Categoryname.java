@@ -2,13 +2,13 @@ package board;
 
 public enum Categoryname {
     
-    TRAVAL( "01", "taval");
-    LOVE( "02", "love");
-    FUN( "03", "fun");
+    TRAVAL( "01", "taval"),
+    LOVE( "02", "love"),
+    FUN( "03", "fun"),
     STUDY( "04", "study");
     
     private String id;
-    private String value; 
+    private String value;
     
     private Categoryname( String id, String value ) {
         this.id = id;
@@ -19,7 +19,7 @@ public enum Categoryname {
         return id;
     }
     
-    public String getName(){
-        return name;
+    public String getValue(){
+        return value;
     }
 }

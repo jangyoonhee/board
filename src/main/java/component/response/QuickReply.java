@@ -1,5 +1,11 @@
 package component.response;
 
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
+import lombok.Data;
+
 public class QuickReply  implements Serializable{
     private String label;
     private String action;
@@ -68,6 +74,6 @@ public class QuickReply  implements Serializable{
     
     @Override
     public String toString() {
-        return "QuickReply [label= " + label + ", action=" + action + ", messageText=" + messageText + ", blockId=" + blockId + ", extra=" + extra "]";
+        return "QuickReply [label= " + label + ", action=" + action + ", messageText=" + messageText + ", blockId=" + blockId + ", extra=" + extra +"]";
     }
 }

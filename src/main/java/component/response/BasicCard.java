@@ -1,7 +1,10 @@
 package component.response;
 
-import java.io.Serializable;
+import java.util.List;
 
+import lombok.Data;
+
+@Data
 public class BasicCard implements Component, Carouselable{
 
 	private String title;
@@ -22,7 +25,7 @@ public class BasicCard implements Component, Carouselable{
 	}
     
     public void setButtons( List<Button> buttons ){
-        this.buttons = buttons
+        this.buttons = buttons;
     }
     
     public List<Button> getButtons() {

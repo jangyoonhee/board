@@ -6,26 +6,28 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import board.dto.BoardDto;
 import board.dto.BoardFileDto;
+import board.dto.GroupDto;
+import board.dto.UserRelationGroupDto;
 
 @Mapper
 public interface GroupMapper {
     
     //그룹개설
-	public GroupDto createGroup( GroupDto groupDto ) throws Exception;
+	public void createGroup( GroupDto groupDto ) throws Exception;
     
     //그룹정보
-	public GroupDto selectGroup( int groupIdx ) throws Exception;
+	public List<GroupDto> selectGroup( int groupIdx ) throws Exception;
     
     //그룹 수정
-	public Map<String,String> updateGroup( GroupDto groupDto ) throws Exception;
+	public void updateGroup( GroupDto groupDto ) throws Exception;
     
     //그룹 삭제
-	public Map<String,String> deleteGroup( int groupIdx ) throws Exception;
+	public void deleteGroup( int groupIdx ) throws Exception;
     
     //그룹 가입
-	public Map<String,String> enterGroup( int groupIdx , int uesrIdx ) throws Exception;
+	public void enterGroup( UserRelationGroupDto userRelationGroupDto ) throws Exception;
     
     //그룹 탈퇴
-	public Map<String,String> secedeGroup( int groupIdx , int uesrIdx ) throws Exception;
+	public void secedeGroup( UserRelationGroupDto userRelationGroupDto  ) throws Exception;
     
 }

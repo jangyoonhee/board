@@ -1,6 +1,7 @@
 package component.response;
 
 import java.io.Serializable;
+import java.util.Map;
 
 public class SkillResponse implements Serializable {
     private final String version;
@@ -28,7 +29,7 @@ public class SkillResponse implements Serializable {
         this.context = context;
     }
     
-    public Map<String, String> getContext(){
+    public Map<String, String> getData(){
         return data;
     }
    

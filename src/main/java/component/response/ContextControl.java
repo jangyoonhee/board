@@ -1,5 +1,9 @@
 package component.response;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ContextControl implements Serializable{
     
     private List<ContextValue> values;
@@ -13,26 +17,26 @@ public class ContextControl implements Serializable{
     }
     
     public void add( ContextValue value ){
-        if( values == null )values = new ArrayList<ContextValues>();
+        if( values == null )values = new ArrayList();
         values.add(value);
     }
     
-    public ContextControl initContext(SkillPayload payload){
+    public ContextControl initContext(SkillPalyload payload){
         ContextValue context = new ContextValue("info", 10, 600);
-        context.setParams( new HaspMap<String, String>());
-        context.getParams().put("custNo", "");
-        context.getParams().put("reNewYn", "");
+        //context.setParams( new HashMap<String, String>());
+        //context.getParams().put("custNo", "");
+        //context.getParams().put("reNewYn", "");
         add(context);
         return this;
     }
     
-    public ContextConrol updateContext( SkillPayload payload ){
+    public ContextControl updateContext( SkillPalyload payload ){
         return updateContext( payload, 10, 600 );
     }
     
-    public ContextConrol updateContext( SkillPayload payload, Integer lifeSpan, Integer ttl ){
+    public ContextControl updateContext( SkillPalyload payload, Integer lifeSpan, Integer ttl ){
         ContextValue context = new ContextValue("info", lifeSpan, ttl);
-        context.setParams( payload.getContextMap() );
+        //context.setParams( payload.get() );
         add(context);
         return this;
     }
