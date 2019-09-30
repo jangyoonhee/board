@@ -49,7 +49,6 @@
 				t_meetingBoard
 			WHERE
 				group_idx = #{groupIdx}
-			ORDER BY board_idx DESC
 		]]>
 	</select>
 	
@@ -57,22 +56,50 @@
 		<![CDATA[
 			INSERT INTO t_meetingBoard
 			(
-				title, 
-				contents, 
-				created_datetime, 
-				creator_id
+				userIdx,
+				title,
+				location,
+				joinDateTime(joinDateTime, '%Y.%m.%d %H:%i:%s'),
+                visitUserIdStrList,
+                maxCount
 			) 
 			VALUES 
 			(
+				#{userIdx} 
 				#{title}, 
-				#{contents}, 
-				NOW(), 
-				'admin'			
+				#{location}, 
+                #{joinDateTime}, 
+                #{visitUserIdStrList}, 
+				 #{maxCount}		
 			)
 		]]>
 	</insert>
     
+	<update id="updateMeetingBoard" parameterType="board.dto.MeetingDto">
+		<![CDATA[
+			UPDATE t_meetingBoard SET 
+				userIdx =#{userIdx} ,
+				title = #{title},
+				location = #{location},
+				joinDateTime = #{joinDateTime},
+                visitUserIdStrList = #{visitUserIdStrList},
+                maxCount =  #{maxCount}
+			WHERE 
+				board_idx = #{boardIdx}
+		]]>
+	</update>
 	
+	<update id="deleteMeetingBoard" parameterType="int">
+		<![CDATA[
+			UPDATE t_board SET 
+				deleted_yn = 'Y',
+				updated_datetime = Now(),
+				updater_id = 'admin'
+			WHERE 
+				board_idx = #{boardIdx}
+		]]>
+	</update>
+    
 	<select id="selectBoardDetail" parameterType="int" resultType="board.dto.BoardDto">
 		<![CDATA[
 			SELECT
