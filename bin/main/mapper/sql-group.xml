@@ -15,6 +15,9 @@
 				t_group
 			WHERE
 				group_idx = #{groupIdx}
+                <if test="category != null and categorey != ''" >
+                    AND category = #{category}
+                </if>
 		]]>
 	</select>
 	
@@ -40,6 +43,36 @@
 			)
 		]]>
 	</insert>
+    
+    <select id="selectMyListGroup" parameterType="board.dto.UserRelationGroupDto" resultType="board.dto.GroupDto">
+		<![CDATA[
+			SELECT
+				groupIdx
+			FROM
+				t_userRelationGroup
+			WHERE
+				user_idx = #{userIdx}
+		]]>
+	</select>
+    
+    <select id="selectMyListGroupByIdx" parameterType="map" resultType="board.dto.GroupDto">
+		<![CDATA[
+			SELECT
+				groupIdx,
+				createId,
+                name,
+                count,
+                introdution
+			FROM
+				t_group
+			WHERE
+				group_idx IN
+                <foreach collection="list" item="groupDto" open="(" separator="," close=")"> 
+                #{group_idx}
+                </foreach>
+		]]>
+	</select>
+    
 	
 	<update id="updateGroup" parameterType="board.dto.GroupDto">
 		<![CDATA[

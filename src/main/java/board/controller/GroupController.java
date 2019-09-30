@@ -32,17 +32,34 @@ public class GroupController {
     
     //내 그룹리스트
     @GetMapping(value="/api/v1/group/my")
-	public Map<String,String> selectlistMyGroup( GroupDto groupDto ) throws Exception{
-    	Map<String,String> rtnMap = new HashMap<String,String>();
+	public List<GroupDto> selectlistMyGroup( int userIdx ) throws Exception{
+         
+        UserRelationGroupDto userRelationGroupDto = new UserRelationGroupDto();
+        userRelationGroupDto.setUserIdx( groupDto.getUserIdx() );
+        List<GroupDto> myGroupListIndex= groupService.selectMyListGroup( userRelationGroupDto );
     	System.out.println("group.selectlistMyGroup");
-    	return rtnMap;
+    	return myList;
 	}
     
     //그룹개설
     @PostMapping(value="/api/v1/group/regist")
 	public Map<String,String> createGroup( GroupDto groupDto ) throws Exception{
+        
+        System.out.println("group.createGroup");
     	Map<String,String> rtnMap = new HashMap<String,String>();
-        System.out.println("group.regist");
+        try{
+            groupService.createGroup(groupDto);
+        }catch(Exception e){
+            
+        }
+        
+        UserRelationGroupDto userRelationGroupDto = new UserRelationGroupDto();
+        userRelationGroupDto.setGroupIdx( groupDto.getCreateId() );
+        userRelationGroupDto.setUserIdx( groupDto.getUserIdx() );
+        userRelationGroupDto.setGrade( DataDefine.GROUP_MASTER );
+        groupService.enterGroup( userRelationGroupDto );
+        rtnMap.put("result","success");
+
         return rtnMap;
 	}
     

@@ -1,6 +1,6 @@
 package board;
 
-public enum Categoryname {
+public enum CategoryName {
     
     TRAVAL( "01", "taval"),
     LOVE( "02", "love"),

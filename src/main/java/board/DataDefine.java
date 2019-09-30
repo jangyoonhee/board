@@ -17,6 +17,14 @@ public class DataDefine {
 	
 	private Map<String, String> messageMap = new HashMap<String, String>();
  
+    //GROUP GRADE 
+	public static String GROUP_MASTER = "master"; //그룹내 유져 등급: 그룹장
+	
+    public static String GROUP_MANAGER = "manager"; //그룹내 유져 등급: 운영진
+    
+	public static String GROUP_MEMBER= "member"; //그룹내 유져 등급: 그룹내 회원
+	
+
 	
 	public static DataDefine getInstance() {
 		if( instance == null ) {

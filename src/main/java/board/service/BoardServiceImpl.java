@@ -59,5 +59,23 @@ public class BoardServiceImpl implements BoardService{
 	public BoardFileDto selectBoardFileInformation(int idx, int boardIdx) throws Exception {
 		return boardMapper.selectBoardFileInformation(idx, boardIdx);
 	}
+    
+    
+    List<MeetingDto> selectMeetingBoardList( int groudIdx )throws Exception{
+        return boardMapper.selectMeesingBoardList();
+    }
+	
+    void insertMeetingBoard(MeetingDto meetingDto) throws Exception
+    {
+        
+    }
+    
+    void updateMeetingBoard(MeetingDto meetingDto) throws Exception{
+        
+    }
+    
+    void deleteMeetingBoard(int meetingIdx) throws Exception{
+        
+    }
 }	
 

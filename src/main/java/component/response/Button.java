@@ -13,4 +13,11 @@ public class Button {
     private String messageText;
     private String osLink; 
     private Map<String, String> extra;
+    
+    public Button(String label, String action)
+    {
+        this.label = label;
+        this.action = action;
+    }
+    
 }

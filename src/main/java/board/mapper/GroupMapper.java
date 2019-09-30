@@ -18,6 +18,9 @@ public interface GroupMapper {
     //그룹정보
 	public List<GroupDto> selectGroup( int groupIdx ) throws Exception;
     
+    //내그룹정보
+    public List<GroupDto> selectMyListGroup( UserRelationGroupDto userRelationGroupDto ) throws Exception;
+    
     //그룹 수정
 	public void updateGroup( GroupDto groupDto ) throws Exception;
     

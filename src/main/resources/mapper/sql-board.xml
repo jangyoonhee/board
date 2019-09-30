@@ -35,7 +35,71 @@
 			)
 		]]>
 	</insert>
+
+    <select id="selectMeetingBoardList" resultType="board.dto.MeetingDto">
+		<![CDATA[
+			SELECT
+				userIdx,
+				title,
+				location,
+				joinDateTime(joinDateTime, '%Y.%m.%d %H:%i:%s'),
+                visitUserIdStrList,
+                maxCount
+			FROM
+				t_meetingBoard
+			WHERE
+				group_idx = #{groupIdx}
+		]]>
+	</select>
 	
+	<insert id="insertMeetingBoard" parameterType="board.dto.MeetingDto" useGeneratedKeys="true" keyProperty="meetingIdx">
+		<![CDATA[
+			INSERT INTO t_meetingBoard
+			(
+				userIdx,
+				title,
+				location,
+				joinDateTime(joinDateTime, '%Y.%m.%d %H:%i:%s'),
+                visitUserIdStrList,
+                maxCount
+			) 
+			VALUES 
+			(
+				#{userIdx} 
+				#{title}, 
+				#{location}, 
+                #{joinDateTime}, 
+                #{visitUserIdStrList}, 
+				 #{maxCount}		
+			)
+		]]>
+	</insert>
+    
+	<update id="updateMeetingBoard" parameterType="board.dto.MeetingDto">
+		<![CDATA[
+			UPDATE t_meetingBoard SET 
+				userIdx =#{userIdx} ,
+				title = #{title},
+				location = #{location},
+				joinDateTime = #{joinDateTime},
+                visitUserIdStrList = #{visitUserIdStrList},
+                maxCount =  #{maxCount}
+			WHERE 
+				board_idx = #{boardIdx}
+		]]>
+	</update>
+	
+	<update id="deleteMeetingBoard" parameterType="int">
+		<![CDATA[
+			UPDATE t_board SET 
+				deleted_yn = 'Y',
+				updated_datetime = Now(),
+				updater_id = 'admin'
+			WHERE 
+				board_idx = #{boardIdx}
+		]]>
+	</update>
+    
 	<select id="selectBoardDetail" parameterType="int" resultType="board.dto.BoardDto">
 		<![CDATA[
 			SELECT

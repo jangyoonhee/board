@@ -11,7 +11,13 @@ public interface GroupService {
 	public void createGroup( GroupDto groupDto ) throws Exception;;
     
     //그룹정보
-	public List<GroupDto> selectGroup( GroupDto groupDto ) throws Exception;;
+	public GroupDto selectGroup( GroupDto groupDto ) throws Exception;
+    
+    //모든 그룹리스트
+    public List<GroupDto> selectAllListGroup( ) throws Exception;
+        
+    //내그룹정보
+    public List<GroupDto> selectMyListGroup( UserRelationGroupDto userRelationGroupDto ) throws Exception;
     
     //그룹 수정
 	public void updateGroup( GroupDto groupDto ) throws Exception;;

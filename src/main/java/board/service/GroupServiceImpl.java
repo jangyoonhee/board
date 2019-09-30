@@ -30,8 +30,22 @@ public class GroupServiceImpl implements GroupService{
 		groupMapper.createGroup(groupDto);
 	}
     
-    //그룹정보
-	public List<GroupDto> selectGroup( GroupDto groupDto ) throws Exception{
+    //그룹 전체 리스트
+	public List<GroupDto> selectAllListGroup(  GroupDto groupDto  ) throws Exception{
+      groupDto.setCategory("");
+	  List<GroupDto> list= groupMapper.selectGroup(groupDto);
+      return list;
+	}
+    
+    //그룹 my리스트
+	public List<GroupDto> selectMyListGroup( UserRelationGroupDto userRelationGroupDto ) throws Exception{
+	  List<GroupDto> idxList =  groupMapper.selectMyListGroup(userRelationGroupDto)
+      List<GroupDto> myGrouplist = groupMapper.selectMyListGroupByIdx(idxList);
+      return myGrouplist;
+	}
+    
+    //그룹 정보
+	public GroupDto selectGroup( GroupDto groupDto ) throws Exception{
 	  List<GroupDto> list= groupMapper.selectGroup(groupDto.getGroupIdx());
       return list;
 	}
