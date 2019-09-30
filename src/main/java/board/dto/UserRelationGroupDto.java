@@ -1,15 +1,15 @@
 package board.dto;
 
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
-import lombok.Data;
-
-@Data
+@Getter
+@Setter
 public class UserRelationGroupDto { 
     
     private int groupIdx;
 	
-	private int userIdx;
+	private String userId;
 	
     private String grade;
     

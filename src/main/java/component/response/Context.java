@@ -2,9 +2,11 @@ package component.response;
 
 import java.io.Serializable;
 import java.util.Map;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class Context implements Serializable{
     
     private String name;

@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import board.dto.BoardDto;
 import board.dto.BoardFileDto;
+import board.dto.MeetingDto;
 import board.mapper.BoardMapper;
 import board.common.FileUtils;
 
@@ -28,7 +29,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void insertBoard(BoardDto board, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception {
 		boardMapper.insertBoard(board);
-		List<BoardFileDto> list = fileUtils.parseFileInfo(board.getBoardIdx(), multipartHttpServletRequest);
+		List<BoardFileDto> list = fileUtils.parseFileInfo( board.getBoardIdx(), multipartHttpServletRequest);
 		if(CollectionUtils.isEmpty(list) == false){
 			boardMapper.insertBoardFileList(list);
 		}
@@ -60,22 +61,25 @@ public class BoardServiceImpl implements BoardService{
 		return boardMapper.selectBoardFileInformation(idx, boardIdx);
 	}
     
-    
-    List<MeetingDto> selectMeetingBoardList( int groudIdx )throws Exception{
-        return boardMapper.selectMeesingBoardList();
+	@Override
+	public List<MeetingDto> selectMeetingBoardList( int groudIdx ) throws Exception{
+        return boardMapper.selectMeetingBoardList( groudIdx );
     }
 	
-    void insertMeetingBoard(MeetingDto meetingDto) throws Exception
-    {
+	@Override
+	public void insertMeetingBoard(MeetingDto meetingDto) throws Exception{
+		boardMapper.insertMeetingBoard( meetingDto );
         
     }
-    
-    void updateMeetingBoard(MeetingDto meetingDto) throws Exception{
-        
+	
+	@Override
+	public void updateMeetingBoard(MeetingDto meetingDto) throws Exception{
+		boardMapper.updateMeetingBoard( meetingDto );
     }
-    
-    void deleteMeetingBoard(int meetingIdx) throws Exception{
-        
+	
+	@Override
+	public void deleteMeetingBoard(int meetingIdx) throws Exception{
+		boardMapper.deleteMeetingBoard( meetingIdx );
     }
 }	
 

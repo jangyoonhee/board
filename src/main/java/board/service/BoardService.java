@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import board.dto.BoardFileDto;
+import board.dto.MeetingDto;
 import board.dto.BoardDto;
 
 public interface BoardService {
@@ -24,7 +25,7 @@ public interface BoardService {
     
     
     //meeting
-    List<MeetingDto> selectMeetingBoardList( int groudIdx )throws Exception;
+    List<MeetingDto> selectMeetingBoardList( int groudIdx ) throws Exception;
 	
     void insertMeetingBoard(MeetingDto meetingDto) throws Exception;
     

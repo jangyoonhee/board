@@ -1,8 +1,13 @@
 package component.response;
 
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class SkillPayload implements Serializeble{
+import board.common.ObjectMapperUtil;
+
+public class SkillPayload implements Serializable{
     
     private UserRequest userRequest;
     private List<Context> contexts;
@@ -13,7 +18,7 @@ public class SkillPayload implements Serializeble{
         this.userRequest = userRequest;
     }
     
-    public void getUserRequest( ){
+    public UserRequest getUserRequest( ){
        return userRequest;
     }
     
@@ -21,7 +26,7 @@ public class SkillPayload implements Serializeble{
         this.contexts = contexts;
     }
     
-    public void getContexts( ){
+    public List<Context> getContexts( ){
        return contexts;
     }
     
@@ -29,15 +34,15 @@ public class SkillPayload implements Serializeble{
         this.bot = bot;
     }
     
-    public void getBot( ){
+    public Bot getBot( ){
        return bot;
     }
     
-     public void setAction(  Bot bot ){
+     public void setAction( Action action){
         this.action = action;
     }
     
-    public void getAction( ){
+    public Action getAction( ){
        return action;
     }
     
@@ -47,7 +52,7 @@ public class SkillPayload implements Serializeble{
     }
     
     public String getSimpleParamValue( String key){
-        if( action != null && action.getParams() !+null ){
+        if( action != null && action.getParams() != null ){
             return action.getParams().get(key);
         }else{
             return "";
@@ -63,7 +68,7 @@ public class SkillPayload implements Serializeble{
     }
     
     public String getSimpleUserId( ){
-        if( userRequest != null && userRequest.getUser() !+null ){
+        if( userRequest != null && userRequest.getUser() != null ){
             return userRequest.getUser().getId();
         }else{
             return "";
@@ -71,8 +76,8 @@ public class SkillPayload implements Serializeble{
     }
     
     public String getSimpleBlockId( ){
-        if( userRequest != null && userRequest.getBlock() !+null ){
-            return userRequest.getUser().getBlock().getId();
+        if( userRequest != null && userRequest.getBlock() != null ){
+            return userRequest.getBlock().getId();
         }else{
             return "";
         }
@@ -82,7 +87,7 @@ public class SkillPayload implements Serializeble{
         Map<String,String> contextMap = new HashMap<String, String>();
          if( contexts == null || contexts.isEmpty()) return contextMap;
         Map<String, Map<String,String>> params = contexts.get(0).getParams();
-        for( Entry<STring, Map<String,String>> entry: params.entrySet()) {
+        for( java.util.Map.Entry<String, Map<String,String>> entry: params.entrySet()) {
             contextMap.put(entry.getKey(), entry.getValue().get("value"));
         }
         
@@ -92,11 +97,11 @@ public class SkillPayload implements Serializeble{
     
     public void setContextParam( String name, String key, String value ){
         if( contexts == null || contexts.isEmpty()){
-            Context contenxt = new Context();
+            Context context = new Context();
             context.setName( name );
             context.setLifespan(0);
             context.setTtl(600);
-            Map<String, Map<String,String>> params = new HashMap<String, Map<String,String>();
+            Map<String, Map<String,String>> params = new HashMap<String, Map<String,String>>();
             params.put( key, new HashMap<String, String>());
             context.setParams(params);
             contexts.add(context);
@@ -108,16 +113,16 @@ public class SkillPayload implements Serializeble{
             action.setParams( new HashMap<String,String>());
         }
         
-        action.getParam().put( key, ObjectMapperUtil.toJson(valueMap));
+        action.getParams().put( key, ObjectMapperUtil.toJson(valueMap) );
         
-        if( action.getDetailParams() == null) {
-            action.setPDetailParams( new HashMap<String,DetailParam>());
+        if( action.getDetailParam() == null) {
+            action.setDetailParam( new HashMap<String,DetailParam>());
         }
         
-        DetailParam detailParm = new DetailParam();
-        DetailParam.setOrigin("1");
-        DetailParam.setGroupName("");
-        DetailParam.setValue(objectMapperUtil.toJson(valueMap));
-        action.getDetailParams().put(key, detailParam);
+        DetailParam detailParam = new DetailParam();
+        detailParam.setOrigin("1");
+        detailParam.setGroupName("");
+        detailParam.setValue( ObjectMapperUtil.toJson(valueMap));
+        action.getDetailParam().put(key, detailParam);
     }
 }

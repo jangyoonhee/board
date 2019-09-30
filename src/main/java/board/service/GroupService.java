@@ -14,7 +14,7 @@ public interface GroupService {
 	public GroupDto selectGroup( GroupDto groupDto ) throws Exception;
     
     //모든 그룹리스트
-    public List<GroupDto> selectAllListGroup( ) throws Exception;
+    public List<GroupDto> selectAllListGroupByCategory( GroupDto groupDto ) throws Exception;
         
     //내그룹정보
     public List<GroupDto> selectMyListGroup( UserRelationGroupDto userRelationGroupDto ) throws Exception;

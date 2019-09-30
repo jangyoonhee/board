@@ -2,6 +2,7 @@ package component.response;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ContextControl implements Serializable{
@@ -21,20 +22,20 @@ public class ContextControl implements Serializable{
         values.add(value);
     }
     
-    public ContextControl initContext(SkillPalyload payload){
+    public ContextControl initContext(SkillPayload payload){
         ContextValue context = new ContextValue("info", 10, 600);
-        //context.setParams( new HashMap<String, String>());
-        //context.getParams().put("custNo", "");
+        //context.setParams( new HashMap<String, String>() );
+       // context.getParams().put("custNo", "");
         //context.getParams().put("reNewYn", "");
         add(context);
         return this;
     }
     
-    public ContextControl updateContext( SkillPalyload payload ){
+    public ContextControl updateContext( SkillPayload payload ){
         return updateContext( payload, 10, 600 );
     }
     
-    public ContextControl updateContext( SkillPalyload payload, Integer lifeSpan, Integer ttl ){
+    public ContextControl updateContext( SkillPayload payload, Integer lifeSpan, Integer ttl ){
         ContextValue context = new ContextValue("info", lifeSpan, ttl);
         //context.setParams( payload.get() );
         add(context);

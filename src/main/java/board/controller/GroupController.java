@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import board.DataDefine;
 import board.dto.BoardDto;
 import board.dto.GroupDto;
 import board.dto.UserRelationGroupDto;
@@ -25,19 +26,19 @@ public class GroupController {
     //전체그룹정보
     @GetMapping(value="/api/v1/group/list")
 	public  List<GroupDto> selectlistGroup( GroupDto groupDto ) throws Exception{
-    	List<GroupDto> list = groupService.selectGroup(groupDto);
+    	List<GroupDto> list = groupService.selectAllListGroupByCategory(groupDto);
         System.out.println("group.selectlistGroup");
 		return list;
 	}
     
     //내 그룹리스트
     @GetMapping(value="/api/v1/group/my")
-	public List<GroupDto> selectlistMyGroup( int userIdx ) throws Exception{
+	public List<GroupDto> selectlistMyGroup( String userId ) throws Exception{
          
         UserRelationGroupDto userRelationGroupDto = new UserRelationGroupDto();
-        userRelationGroupDto.setUserIdx( groupDto.getUserIdx() );
-        List<GroupDto> myGroupListIndex= groupService.selectMyListGroup( userRelationGroupDto );
-    	System.out.println("group.selectlistMyGroup");
+        userRelationGroupDto.setUserId( userId );
+        List<GroupDto> myList= groupService.selectMyListGroup( userRelationGroupDto );
+        System.out.println("group.selectlistMyGroup");
     	return myList;
 	}
     
@@ -54,9 +55,9 @@ public class GroupController {
         }
         
         UserRelationGroupDto userRelationGroupDto = new UserRelationGroupDto();
-        userRelationGroupDto.setGroupIdx( groupDto.getCreateId() );
-        userRelationGroupDto.setUserIdx( groupDto.getUserIdx() );
-        userRelationGroupDto.setGrade( DataDefine.GROUP_MASTER );
+        userRelationGroupDto.setGroupIdx( groupDto.getGroupIdx() );
+        userRelationGroupDto.setUserId( groupDto.getCreateId() );
+        userRelationGroupDto.setGrade( DataDefine.GROUP_MASTER);
         groupService.enterGroup( userRelationGroupDto );
         rtnMap.put("result","success");
 

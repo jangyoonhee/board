@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 import lombok.Data;
 
-@Data
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class DetailParam implements Serializable{
     
     private String origin;

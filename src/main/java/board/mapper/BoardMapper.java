@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import board.dto.BoardDto;
 import board.dto.BoardFileDto;
+import board.dto.MeetingDto;
 
 @Mapper
 public interface BoardMapper {
@@ -28,12 +29,12 @@ public interface BoardMapper {
 	BoardFileDto selectBoardFileInformation(@Param("idx") int idx, @Param("boardIdx" )int boardIdx);
     
     //meeting
-    List<MeetingDto> selectMeeingBoardList() throws Exception;
+    List<MeetingDto> selectMeetingBoardList( int groupIdx ) throws Exception;
 	
 	void insertMeetingBoard(MeetingDto board) throws Exception;
     
     void updateMeetingBoard(MeetingDto board) throws Exception;
 	
-	void deleteMeeingBoard(int meetingBoardIdx) throws Exception;
+	void deleteMeetingBoard(int meetingBoardIdx) throws Exception;
 
 }

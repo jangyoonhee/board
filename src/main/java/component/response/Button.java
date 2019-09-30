@@ -1,10 +1,14 @@
 package component.response;
 
+import java.io.Serializable;
 import java.util.Map;
-import lombok.Data;
 
-@Data
-public class Button {
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class Button  implements Serializable {
     
     private final String label;
     private final String action;

@@ -10,7 +10,7 @@ public enum CategoryName {
     private String id;
     private String value;
     
-    private Categoryname( String id, String value ) {
+    private CategoryName( String id, String value ) {
         this.id = id;
         this.value = value;
     }

@@ -1,27 +1,18 @@
 package board.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import board.dto.BoardDto;
-import board.dto.BoardFileDto;
+import board.common.FileUtils;
 import board.dto.GroupDto;
 import board.dto.UserRelationGroupDto;
-import board.mapper.BoardMapper;
 import board.mapper.GroupMapper;
-import board.common.FileUtils;
 
 @Service
 public class GroupServiceImpl implements GroupService{
 	
-	@Autowired
-	private FileUtils fileUtils;
-    
     @Autowired
 	private GroupMapper groupMapper;
     
@@ -31,23 +22,21 @@ public class GroupServiceImpl implements GroupService{
 	}
     
     //그룹 전체 리스트
-	public List<GroupDto> selectAllListGroup(  GroupDto groupDto  ) throws Exception{
-      groupDto.setCategory("");
-	  List<GroupDto> list= groupMapper.selectGroup(groupDto);
+	public List<GroupDto> selectAllListGroupByCategory(  GroupDto groupDto  ) throws Exception{
+	  List<GroupDto> list= groupMapper.selectListGroup( groupDto );
       return list;
 	}
     
     //그룹 my리스트
 	public List<GroupDto> selectMyListGroup( UserRelationGroupDto userRelationGroupDto ) throws Exception{
-	  List<GroupDto> idxList =  groupMapper.selectMyListGroup(userRelationGroupDto)
-      List<GroupDto> myGrouplist = groupMapper.selectMyListGroupByIdx(idxList);
+	  List<GroupDto> idxList =  groupMapper.selectMyListGroup(userRelationGroupDto);
+      List<GroupDto> myGrouplist = groupMapper.selectMyListGroupInfo(idxList);
       return myGrouplist;
 	}
     
     //그룹 정보
 	public GroupDto selectGroup( GroupDto groupDto ) throws Exception{
-	  List<GroupDto> list= groupMapper.selectGroup(groupDto.getGroupIdx());
-      return list;
+      return groupMapper.selectGroup(groupDto);
 	}
     
     //그룹 수정
