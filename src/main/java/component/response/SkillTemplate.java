@@ -36,9 +36,9 @@ public class SkillTemplate implements Serializable {
 	}
     
     public void adds(QuickReply quickReplies ){
-       /* for( QuickReply quickReply : quickReplies ){
+        for( QuickReply quickReply : quickReplies ){
             add(quickReply);
-        }*/
+        }
 	}
     
     @Override

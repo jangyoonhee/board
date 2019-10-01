@@ -66,24 +66,24 @@ public class BoardController {
 	/*
 	 * 모임게시판
 	 */
-    @GetMapping(value="/api/meeting.do")
+    @GetMapping(value="api/v1/user/meeting.do")
 	public List<MeetingDto> MeetingList( int groupIdx ) throws Exception{
 		return boardService.selectMeetingBoardList( groupIdx );
 	}
 	
-	@PostMapping(value="/api/meeting/write.do")
+	@PostMapping(value="api/v1/user/write.do")
 	public String insertMeetingBoard(MeetingDto meetingDto , MultipartHttpServletRequest multipartHttpServletRequest) throws Exception{
 		boardService.insertMeetingBoard(meetingDto);
 		return "success";
 	}
 
-	@PutMapping(value="/api/meeting/{meetingIdx}.do")
+	@PutMapping(value="api/v1/meeting/{meetingIdx}.do")
 	public String updateMeetingBoard(@RequestBody MeetingDto meetingDto) throws Exception{
 		boardService.updateMeetingBoard(meetingDto);
 		return "success";
 	}
 
-	@DeleteMapping(value="/api/meeting/{meetingIdx}.do")
+	@DeleteMapping(value="/api/v1/meeting/{meetingIdx}.do")
 	public String deleteMeetingBoard(@PathVariable("meetingIdx") int meetingIdx) throws Exception{
 		boardService.deleteMeetingBoard(meetingIdx);
 		return "success";

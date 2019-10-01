@@ -87,7 +87,7 @@ public class SkillPayload implements Serializable{
         Map<String,String> contextMap = new HashMap<String, String>();
          if( contexts == null || contexts.isEmpty()) return contextMap;
         Map<String, Map<String,String>> params = contexts.get(0).getParams();
-        for( java.util.Map.Entry<String, Map<String,String>> entry: params.entrySet()) {
+        for( Entry<String, Map<String,String>> entry: params.entrySet()) {
             contextMap.put(entry.getKey(), entry.getValue().get("value"));
         }
         
@@ -106,6 +106,16 @@ public class SkillPayload implements Serializable{
             context.setParams(params);
             contexts.add(context);
         }
+        contexts.get(0).getParams().get(key).put("value",value);
+        contexts.get(0).getParams().get(key).put("resolvedValue",value);
+    }
+    
+    public void addSimpleExtraValue(String key, Map<String, Object> valueMap){
+          if( action.getClientExtra() == null){
+               action.setClientExtr( new HashMap<String,String>());
+          }
+           
+        action.getClientExtra().put(key, value);
     }
     
     public void addParamValue( String key, Map<String, Object> valueMap){

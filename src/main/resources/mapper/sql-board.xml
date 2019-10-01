@@ -54,22 +54,24 @@
 	
 	<insert id="insertMeetingBoard" parameterType="board.dto.MeetingDto" useGeneratedKeys="true" keyProperty="meetingIdx">
 		<![CDATA[
-			INSERT INTO t_meetingBoard
+			INSERT INTO t_meeting_board
 			(
-				userIdx,
+                group_idx,
+				user_id,
 				title,
 				location,
-				joinDateTime(joinDateTime, '%Y.%m.%d %H:%i:%s'),
-                visitUserIdStrList,
+				join_datetime(joinDateTime, '%Y.%m.%d %H:%i:%s'),
+                visit_user_id_str,
                 maxCount
 			) 
 			VALUES 
 			(
-				#{userIdx} 
+                #{groupIdx},
+				#{userId}, 
 				#{title}, 
 				#{location}, 
-                #{joinDateTime}, 
-                #{visitUserIdStrList}, 
+                #{joinDatetime}, 
+                #{visitUserIdStr}, 
 				 #{maxCount}		
 			)
 		]]>
@@ -77,13 +79,13 @@
     
 	<update id="updateMeetingBoard" parameterType="board.dto.MeetingDto">
 		<![CDATA[
-			UPDATE t_meetingBoard SET 
-				userIdx =#{userIdx} ,
+			UPDATE t_meeting_board SET 
+				user_id =#{userId} ,
 				title = #{title},
 				location = #{location},
-				joinDateTime = #{joinDateTime},
-                visitUserIdStrList = #{visitUserIdStrList},
-                maxCount =  #{maxCount}
+				join_datetime = #{joinDatetime},
+                visit_user_id_str = #{visitUserIdStr},
+                max_count =  #{maxCount}
 			WHERE 
 				board_idx = #{boardIdx}
 		]]>

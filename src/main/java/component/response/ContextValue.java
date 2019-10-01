@@ -3,7 +3,11 @@ package component.response;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class ContextValue implements Serializable{
     
     private final String name;

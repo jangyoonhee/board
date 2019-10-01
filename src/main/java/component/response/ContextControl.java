@@ -24,9 +24,9 @@ public class ContextControl implements Serializable{
     
     public ContextControl initContext(SkillPayload payload){
         ContextValue context = new ContextValue("info", 10, 600);
-        //context.setParams( new HashMap<String, String>() );
-       // context.getParams().put("custNo", "");
-        //context.getParams().put("reNewYn", "");
+        context.setParams( new HashMap<String, String>() );
+        context.getParams().put("custNo", "");
+        context.getParams().put("reNewYn", "");
         add(context);
         return this;
     }
@@ -37,7 +37,7 @@ public class ContextControl implements Serializable{
     
     public ContextControl updateContext( SkillPayload payload, Integer lifeSpan, Integer ttl ){
         ContextValue context = new ContextValue("info", lifeSpan, ttl);
-        //context.setParams( payload.get() );
+        context.setParams( payload.getContextMap() );
         add(context);
         return this;
     }

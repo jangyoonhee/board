@@ -315,9 +315,93 @@
     </footer>
     <!--footer end-->
   </section>
+    
+  <!-- 새그룹 만들기 -->
+   <div id="popCreateGroup" style="display:none">
+   
+               <div id="login-page">
+                <div class="container">
+                    <div class="row mt">
+                      <div class="col-lg-12">
+                        <div class="form-panel">
+                          <h4 class="mb"> 새 그룹 만들기 </h4>
+                          <form id="createGroupForm" class="form-horizontal style-form" role="form" method="POST"  enctype="multipart/form-data">
+                            <input type="hidden" name="category"/>
+                            <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">GROUP NAME</label>
+                              <div class="col-sm-10">
+                                <input type="text" name="groupName" class="form-control round-form">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">INTRODUTION</label>
+                              <div class="col-sm-10">
+                                <input type="text" name="introdution" class="form-control round-form">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">CATEGORY</label>
+                              <select name="categorySelectBox" style="margin-top: 15px;">
+                                  <option value="traval">TRAVAL</option>
+                                  <option value="love">LOVE</option>
+                                  <option value="study">STUDY</option>
+                                </select>
+                            <br>
+                            </div>
+
+                            <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">PEOPLE MAX COUNT</label>
+                              <select name="peopleMaxCountSelectBox" style="margin-top: 15px;">
+                                  <option>20</option>
+                                  <option>40</option>
+                                  <option>50</option>
+                                  <option>70</option>
+                                  <option>100</option>
+                                </select>
+                            <br>
+                            </div>
+
+                            <div class="form-group last">
+                              <label class="control-label col-md-3">Image Upload</label>
+                              <div class="col-md-9">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                  <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
+                                  </div>
+                                  <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                  <div>
+                                    <span class="btn btn-theme02 btn-file">
+                                      <span class="fileupload-new"><i class="fa fa-paperclip"></i> Select image</span>
+                                    <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                    <input type="file"  id="files" name="files" class="default" />
+                                    </span>
+                                    <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
+                                  </div>
+                                </div>
+                                <span class="label label-info">NOTE!</span>
+                                <span>
+                                  Attached image thumbnail is
+                                  supported in Latest Firefox, Chrome, Opera,
+                                  Safari and Internet Explorer 10 only
+                                  </span>
+                              </div>
+                            </div>
+
+                          <div class="form-send">
+                            <button id="ajaxCreateGroupBtn" class="btn btn-large btn-primary">CREATE</button>
+                          </div>
+                          </form>
+                        </div>
+                      </div>
+                      <!-- col-lg-12-->
+                    </div>
+                </div>
+              </div>
+  
+  </div>
+  <!-- 새그룹 만들기 -->
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="lib/jquery/jquery.min.js"></script>
-
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="lib/jquery.scrollTo.min.js"></script>
@@ -422,11 +506,41 @@
         
         
         $('#createGroupBtn').click(function() { 
-             location.href = 'createGroup.html';
+            $('#popCreateGroup').show();
+        });
+        
+        //새 그룹 만들기
+        $('#ajaxCreateGroupBtn').click(function() { 
+            event.preventDefault();
+            var selectCategory = $('#categorySelectBox:selected').val();
+            $('#categofy').val(selectCategory):
+
+            var formData = new FormData($('#createGroupForm')[0]);
+        
+            $.ajax({
+                type : "POST",
+                crossOrigin: true,
+                data: formData,
+                enctype: "multipart/form-data",
+                processData: false,
+                contentType: false,
+                cache: false,
+                url : "api/v1/group/crateGroup.do",
+                success : function(data) {
+                   if (data.result == 'success') {
+                        alert('그룹이 개설되었습니다.'')
+                        location.href = 'groupMain.do'
+                    } else {
+                        alert(data.message);
+                    }
+                },
+                error : function(request, status, error) {
+                   alert("에러가 발생하였습니다. 다시 시도해주세요:");
+                }
+            })
         });
         
    
-
     function myNavFunction(id) {
       $("#date-popover").hide();
       var nav = $("#" + id).data("navigation");

@@ -31,5 +31,11 @@ public class ViewController {
 		return "write";
 	}
 	
+   
 
+	@RequestMapping(value="/groupMain.do", method=RequestMethod.GET)
+	public String groupMain() throws Exception{
+       
+		return "groupMain";
+	}
 }

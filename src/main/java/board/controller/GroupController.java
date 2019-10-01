@@ -43,7 +43,7 @@ public class GroupController {
 	}
     
     //그룹개설
-    @PostMapping(value="/api/v1/group/regist")
+    @PostMapping(value="/api/v1/group/regist.do")
 	public Map<String,String> createGroup( GroupDto groupDto ) throws Exception{
         
         System.out.println("group.createGroup");

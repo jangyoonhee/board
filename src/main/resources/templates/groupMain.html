@@ -541,10 +541,12 @@
   <script type="application/javascript">
     $(document).ready(function() {
 
-         //리스트 값 뿌려주기
+          //현재 선택 그룹에서 모임게시판 리스트 가져오기
           $.ajax({
             type : "GET",
-            url : "https://dbsl.ga:8070/api/board.do", 
+            url : "api/v1/user/meeting.do", 
+            dataType: 'json',
+            data: {"groupIdx" : 0},
             success : function(data) {
             	var boardTag = '';
             	var rowidx = 0;
