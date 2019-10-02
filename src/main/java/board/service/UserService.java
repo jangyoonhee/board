@@ -8,7 +8,7 @@ import board.dto.UserDto;
 
 public interface UserService {
 	
-	Map<String,String> selectUser(UserDto user) throws Exception;
+	UserDto selectUser(UserDto user) throws Exception;
     
 	void insertUser(UserDto user, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception;
 }

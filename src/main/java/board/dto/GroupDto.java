@@ -21,7 +21,7 @@ public class GroupDto {
 
     private String groupName;
     
-    private int peopleMaxCount;
+    private int peopleMax;
     
     private String category;
     

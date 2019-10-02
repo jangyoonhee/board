@@ -6,6 +6,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import intercepter.LoginIntercepter;
+
 
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer{
@@ -20,6 +22,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer{
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry){
-		//registry.addInterceptor(new LoggerInterceptor());
+		registry.addInterceptor(new LoginIntercepter())
+				.addPathPatterns("/api/v1/user/loginEnter.do");
 	}
 }

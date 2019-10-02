@@ -1,11 +1,13 @@
 package board.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 public class UserDto {
 	private int userIdx;
-	private String id;
+	private String userId;
 	private String pwd;
 	private String userName;
     private String email;

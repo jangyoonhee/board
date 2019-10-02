@@ -3,8 +3,8 @@ package board.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 public class UserRelationGroupDto { 
     
     private int groupIdx;

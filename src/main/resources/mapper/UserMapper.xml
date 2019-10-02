@@ -9,26 +9,31 @@
 		<![CDATA[
 			SELECT
 				email,
+				user_id,
 				pwd
 			FROM
 				t_user
 			WHERE
 				email = #{email} 
 		]]>
+			<if test="userId != null and userId != ''">
+			AND
+				user_id = #{userId} 
+			</if>
     </select>
     
    <insert id="insertUser" parameterType="board.dto.UserDto" useGeneratedKeys="true" keyProperty="userIdx">
 		<![CDATA[
 			INSERT INTO t_user
 			(
-				id, 
+				user_id, 
 				email, 
 				pwd,
 				user_name
 			) 
 			VALUES 
 			(
-				#{id}, 
+				#{userId}, 
 				#{email}, 
 				#{pwd}, 
 				#{userName}			

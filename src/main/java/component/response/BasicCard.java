@@ -1,5 +1,6 @@
 package component.response;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
@@ -18,11 +19,12 @@ public class BasicCard implements Component, Carouselable{
         buttons.add(button);
     }
     
-    public void adds( Button buttons ){
-        for( Button button: buttons ){
+    //여기
+    public void adds( Button button ){
+      /*  for( Button button: buttons ){
             add(button);
         }
-        
+        */
     }
 
     public void addDescription(String line){

@@ -25,21 +25,23 @@
 		<![CDATA[
 			INSERT INTO t_group
 			(
-				createId,
+				create_id,
 				fastJoin,
-                name,
+                group_name,
                 introdution,
-                createdDatetime,
-                maxCount
+                created_datetime,
+                people_max,
+                catetory
 			) 
 			VALUES 
 			(
-				#{create_id}, 
-				#{'0'}, 
-                #{name}, 
+				'dbsl215', 
+				'0', 
+                #{groupName}, 
                 #{introdution}, 
 				NOW(), 
-				#{maxCount}			
+				#{peopleMax},
+				#{category}			
 			)
 		]]>
 	</insert>
@@ -91,13 +93,13 @@
 			INSERT INTO t_userRelationGroup
 			(
 				group_idx,
-				user_idx,
+				user_id,
                 enter_date_time
 			) 
 			VALUES 
 			(
 				#{groupIdx}, 
-				#{userIdx}, 
+				#{userId}, 
 				NOW()	
 			)
 		]]>

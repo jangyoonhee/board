@@ -1,10 +1,6 @@
 server:
-  port: 8070
-  ssl: 
-    key-store: /home/yoonhee/cert_and_key.p12
-    key-store-password: 1q2w3e4r
-    key-store-type: pkcs12
-    key-alias: http
+  port: 8090
+
 spring: 
   application:
     name: board

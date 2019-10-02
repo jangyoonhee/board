@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import board.common.ObjectMapperUtil;
 
@@ -112,10 +113,11 @@ public class SkillPayload implements Serializable{
     
     public void addSimpleExtraValue(String key, Map<String, Object> valueMap){
           if( action.getClientExtra() == null){
-               action.setClientExtr( new HashMap<String,String>());
+               action.setClientExtra( new HashMap<String,String>());
           }
            
-        action.getClientExtra().put(key, value);
+       //여기
+       // action.getClientExtra().put(key, valueMap);
     }
     
     public void addParamValue( String key, Map<String, Object> valueMap){

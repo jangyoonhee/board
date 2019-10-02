@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import board.DataDefine;
+import board.common.DataDefine;
 import board.common.FileUtils;
 import board.dto.BoardFileDto;
 import board.dto.UserDto;
@@ -25,20 +25,11 @@ public class UserServiceImpl implements UserService{
 	private FileUtils fileUtils;
     
 	@Override
-	public Map<String,String> selectUser(UserDto user) throws Exception {
+	public UserDto selectUser(UserDto user) throws Exception {
 		Map<String,String> rtnMap = new HashMap<String,String>();
 		UserDto resultUser = userMapper.selectUser( user );
-		if( resultUser == null ) {
-			rtnMap.put( "code" , DataDefine.getInstance().USER_LOGIN_STATE_NONE_EMAIL);
-		}else {
-
-			if( user.getPwd().equals(resultUser.getPwd())) {
-				rtnMap.put( "code" , DataDefine.getInstance().USER_LOGIN_STATE_SUCCESS);
-			}else {
-				rtnMap.put( "code" , DataDefine.getInstance().USER_LOGIN_STATE_WRONG_PWD);
-			}
-		}
-		return rtnMap;
+	
+		return resultUser;
 	}
     
     @Override

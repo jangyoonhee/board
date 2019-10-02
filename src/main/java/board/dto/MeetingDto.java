@@ -1,8 +1,10 @@
 package board.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 public class MeetingDto { 
  
 	private int meetingIdx; 

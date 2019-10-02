@@ -35,10 +35,11 @@ public class SkillTemplate implements Serializable {
         quickReplies.add(quickReply);
 	}
     
-    public void adds(QuickReply quickReplies ){
-        for( QuickReply quickReply : quickReplies ){
+	//여기
+    public void adds(QuickReply quickReply ){
+     /*   for( QuickReply quickReply : quickReplies ){
             add(quickReply);
-        }
+        }*/
 	}
     
     @Override

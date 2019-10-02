@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import board.DataDefine;
-import board.dto.BoardDto;
+import board.common.DataDefine;
 import board.dto.GroupDto;
+import board.dto.UserDto;
 import board.dto.UserRelationGroupDto;
 import board.service.GroupService;
 
@@ -44,9 +47,14 @@ public class GroupController {
     
     //그룹개설
     @PostMapping(value="/api/v1/group/regist.do")
-	public Map<String,String> createGroup( GroupDto groupDto ) throws Exception{
+	public Map<String,String> createGroup(HttpServletRequest request, GroupDto groupDto ) throws Exception{
         
         System.out.println("group.createGroup");
+        
+        HttpSession httpSession = request.getSession();
+        UserDto user = (UserDto) httpSession.getAttribute("user");
+        groupDto.setCreateId( user.getUserId() );
+		  
     	Map<String,String> rtnMap = new HashMap<String,String>();
         try{
             groupService.createGroup(groupDto);
