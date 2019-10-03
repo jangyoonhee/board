@@ -343,7 +343,7 @@
                           <h4 class="mb"> 새 그룹 만들기 </h4>
                           <form id="createGroupForm" class="form-horizontal style-form" role="form" method="POST"  enctype="multipart/form-data">
                             <input type="hidden" name="category"/>
-                             <input type="hidden" name="peopleMax"/>
+                             <input type="hidden" name="peopleMaxCount"/>
                             <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">GROUP NAME</label>
                               <div class="col-sm-10">
@@ -486,43 +486,8 @@
 	          }
 	        ]
 	      });
-        
-          $.ajax({
-            type : "GET",
-            url : "/api/v1/group/my", 
-            success : function(data) {
-            	var boardTag = '';
-            	var rowidx = 0;
-            	var rowTag = '<div class="row" style="margin-left: 0px; margin-right: 0px;">';
-            	for( var i=1; i<= data.length; i++){
-            		var group = data[i-1];	
-            	 	boardTag += '<div class="col-lg-4 col-md-4 col-sm-4 mb">'+
-                                    '<div class="content-panel pn">'+
-                                        '<div id="profile-01"><h3>image</h3></div>'+
-                                    '<div class="profile-01 centered">'+
-                                        '<p>'+
-                                            group.groupName+ 
-                                        '</p>'+
-                                    '</div>'+
-                                    '<div class="centered">'+
-                                        '<h6><i class="fa fa-envelope"></i><br/>'+
-                                           + group.introdution + 
-                                        '</h6>'+
-                                      '</div>'+
-                                    '</div>'+
-                                  '</div>';
-		                      			
-	                  	
-            		if( i % 3 == 0 ){ rowTag.concat( boardTag, '</div>')}
-            	}
-            	
-                $('#groupContents').append(boardTag);
-            },
-            error : function(request, status, error) {
-                alert("code:" + request.status + "\n" + "error:" + error);
-            }
-        })  
-        
+
+        myGroupList();
         //새그룹 만들기 팝업
         $('#createGroupBtn').click(function() { 
             $('#popCreateGroup').show();
@@ -537,23 +502,24 @@
         $('#ajaxCreateGroupBtn').click(function() { 
             event.preventDefault();
             $('[name=category]').val($("select[name=categorySelectBox]").val());
-            $('[name=peopleMax]').val($("select[name=peopleMaxCountSelectBox]").val());
+            $('[name=peopleMaxCount]').val($("select[name=peopleMaxCountSelectBox]").val());
             
             var formData = new FormData($('#createGroupForm')[0]);
         
             $.ajax({
-                type : "POST",
+                type : "post",
                 crossOrigin: true,
                 data: formData,
                 enctype: "multipart/form-data",
                 processData: false,
                 contentType: false,
                 cache: false,
-                url : "api/v1/group/crateGroup.do",
+                url : "/api/v1/group/crateGroup.do",
                 success : function(data) {
                    if (data.result == 'success') {
-                        alert('그룹이 개설되었습니다.')
-                        location.href = 'groupMain.do'
+                        alert('그룹이 개설되었습니다.');
+                        $('#popCreateGroup').hide();
+                        myGroupList();
                     } else {
                         alert(data.message);
                     }
@@ -564,7 +530,48 @@
             })
         });
     });
-   
+    
+    
+    function myGroupList(){
+        
+          $.ajax({
+	            type : "GET",
+	            url : "/api/v1/group/my", 
+	            success : function(data) {
+	            	debugger;
+	            	var boardTag = '';
+	            	var rowidx = 0;
+	            	var rowTag = '<div class="row" style="margin-left: 0px; margin-right: 0px;">';
+	            	for( var i=0; i< data.length; i++){
+	            		var group = data[i];	
+	            	 	boardTag += '<div class="col-lg-4 col-md-4 col-sm-4 mb">'+
+	                                    '<div class="content-panel pn">'+
+	                                        '<div id="profile-01"><h3>image</h3></div>'+
+	                                    '<div class="profile-01 centered">'+
+	                                        '<p>'+
+	                                            group.groupName+ 
+	                                        '</p>'+
+	                                    '</div>'+
+	                                    '<div class="centered">'+
+	                                        '<h6><i class="fa fa-envelope"></i><br/>'+
+	                                           + group.introdution + 
+	                                        '</h6>'+
+	                                      '</div>'+
+	                                    '</div>'+
+	                                  '</div>';
+			                      			
+		                  	
+	            		if( i % 3 == 0 ){ rowTag.concat( boardTag, '</div>')}
+	            	}
+	            	
+	                $('#groupContents').append(boardTag);
+	            },
+	            error : function(request, status, error) {
+	                alert("code:" + request.status + "\n" + "error:" + error);
+	            }
+	        })   
+    }
+    
     function myNavFunction(id) {
       $("#date-popover").hide();
       var nav = $("#" + id).data("navigation");

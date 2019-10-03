@@ -1,6 +1,9 @@
 package board.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +20,8 @@ public class GroupServiceImpl implements GroupService{
 	private GroupMapper groupMapper;
     
     //그룹개설
-	public void createGroup( GroupDto groupDto ) throws Exception{
-		groupMapper.createGroup(groupDto);
+	public int createGroup( GroupDto groupDto ) throws Exception{
+		return groupMapper.createGroup(groupDto);
 	}
     
     //그룹 전체 리스트
@@ -30,7 +33,13 @@ public class GroupServiceImpl implements GroupService{
     //그룹 my리스트
 	public List<GroupDto> selectMyListGroup( UserRelationGroupDto userRelationGroupDto ) throws Exception{
 	  List<GroupDto> idxList =  groupMapper.selectMyListGroup(userRelationGroupDto);
-      List<GroupDto> myGrouplist = groupMapper.selectMyListGroupInfo(idxList);
+	  List<GroupDto> myGrouplist = new ArrayList();
+	  if( idxList.size() > 0 ) {
+		  Map<String, Object> map = new HashMap<String, Object>();
+		  map.put("list", idxList);
+		  myGrouplist= groupMapper.selectMyListGroupInfo(map);
+	  }
+     
       return myGrouplist;
 	}
     

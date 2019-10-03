@@ -26,10 +26,7 @@ public class UserServiceImpl implements UserService{
     
 	@Override
 	public UserDto selectUser(UserDto user) throws Exception {
-		Map<String,String> rtnMap = new HashMap<String,String>();
-		UserDto resultUser = userMapper.selectUser( user );
-	
-		return resultUser;
+		return  userMapper.selectUser( user );
 	}
     
     @Override

@@ -6,41 +6,40 @@
 	<select id="selectGroup" resultType="board.dto.GroupDto">
 		<![CDATA[
 			SELECT
-				groupIdx,
-				createId,
-                name,
-                count,
-				DATE_FORMAT(createdDatetime, '%Y.%m.%d %H:%i:%s') AS createdDatetime
+				group_idx,
+				create_id,
+                group_name,
+                introdution,
+                people_max_count,
+                catetory,
+				DATE_FORMAT(create_datetime, '%Y.%m.%d %H:%i:%s') AS createDatetime
 			FROM
 				t_group
 			WHERE
 				group_idx = #{groupIdx}
-                <if test="category != null and categorey != ''" >
-                    AND category = #{category}
-                </if>
 		]]>
 	</select>
 	
-	<insert id="insertGroup" parameterType="board.dto.GroupDto" useGeneratedKeys="true" keyProperty="groupIdx">
+	<insert id="createGroup" parameterType="board.dto.GroupDto" useGeneratedKeys="true" keyProperty="groupIdx">
 		<![CDATA[
 			INSERT INTO t_group
 			(
 				create_id,
-				fastJoin,
+				fast_join,
                 group_name,
                 introdution,
-                created_datetime,
-                people_max,
+                create_datetime,
+                people_max_count,
                 catetory
 			) 
 			VALUES 
 			(
-				'dbsl215', 
+				#{createId}, 
 				'0', 
                 #{groupName}, 
                 #{introdution}, 
 				NOW(), 
-				#{peopleMax},
+				#{peopleMaxCount},
 				#{category}			
 			)
 		]]>
@@ -49,30 +48,31 @@
     <select id="selectMyListGroup" parameterType="board.dto.UserRelationGroupDto" resultType="board.dto.GroupDto">
 		<![CDATA[
 			SELECT
-				groupIdx
+				group_idx AS groupIdx
 			FROM
-				t_userRelationGroup
+				t_user_relation_group
 			WHERE
-				user_idx = #{userIdx}
+				user_id = #{userId}
 		]]>
 	</select>
     
-    <select id="selectMyListGroupByIdx" parameterType="map" resultType="board.dto.GroupDto">
+    <select id="selectMyListGroupInfo" parameterType="java.util.Map" resultType="board.dto.GroupDto">
 		<![CDATA[
 			SELECT
-				groupIdx,
-				createId,
-                name,
-                count,
-                introdution
-			FROM
+				group_idx AS groupIdx,
+				create_id AS createId,
+                group_name AS groupName,
+                introdution,
+                people_max_count AS peopeMax,
+                catetory
+			FROM                
 				t_group
 			WHERE
 				group_idx IN
-                <foreach collection="list" item="groupDto" open="(" separator="," close=")"> 
-                #{group_idx}
-                </foreach>
 		]]>
+                <foreach collection='list' item='item' open='(' separator=',' close=')'> 
+                	#{item.groupIdx}
+                </foreach>
 	</select>
     
 	
@@ -90,16 +90,18 @@
 	
 	<insert id="enterGroup" parameterType="board.dto.UserRelationGroupDto">
         <![CDATA[
-			INSERT INTO t_userRelationGroup
+			INSERT INTO t_user_relation_group
 			(
 				group_idx,
 				user_id,
-                enter_date_time
+                grade,
+  				create_datetime
 			) 
 			VALUES 
 			(
 				#{groupIdx}, 
 				#{userId}, 
+				#{grade},
 				NOW()	
 			)
 		]]>
@@ -107,11 +109,11 @@
 	
 	<delete id="secedeGroup" parameterType="board.dto.UserRelationGroupDto">
 		   <![CDATA[
-			DELETE FROM t_userRelationGroup
+			DELETE FROM t_user_relation_group
             WHERE
 				group_idx = #{groupIdx}
             AND
-				user_idx = #{userIdx}
+				user_id = #{userId}
 		]]>
 	</delete>
 	

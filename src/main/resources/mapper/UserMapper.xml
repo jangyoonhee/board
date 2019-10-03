@@ -9,7 +9,9 @@
 		<![CDATA[
 			SELECT
 				email,
-				user_id,
+				user_id as userId,
+				user_name as userName,
+				user_idx as userIdx,
 				pwd
 			FROM
 				t_user

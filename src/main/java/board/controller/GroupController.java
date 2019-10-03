@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import board.common.DataDefine;
 import board.dto.GroupDto;
@@ -27,7 +28,7 @@ public class GroupController {
     private GroupService groupService;  
     
     //전체그룹정보
-    @GetMapping(value="/api/v1/group/list")
+    @GetMapping("/api/v1/group/list")
 	public  List<GroupDto> selectlistGroup( GroupDto groupDto ) throws Exception{
     	List<GroupDto> list = groupService.selectAllListGroupByCategory(groupDto);
         System.out.println("group.selectlistGroup");
@@ -35,19 +36,21 @@ public class GroupController {
 	}
     
     //내 그룹리스트
-    @GetMapping(value="/api/v1/group/my")
-	public List<GroupDto> selectlistMyGroup( String userId ) throws Exception{
-         
+    @GetMapping("/api/v1/group/my")
+	public List<GroupDto> selectlistMyGroup(HttpServletRequest request) throws Exception{
+        HttpSession httpSession = request.getSession();
+        UserDto user = (UserDto) httpSession.getAttribute("user");
+        
         UserRelationGroupDto userRelationGroupDto = new UserRelationGroupDto();
-        userRelationGroupDto.setUserId( userId );
+        userRelationGroupDto.setUserId( user.getUserId() );
         List<GroupDto> myList= groupService.selectMyListGroup( userRelationGroupDto );
         System.out.println("group.selectlistMyGroup");
     	return myList;
 	}
     
     //그룹개설
-    @PostMapping(value="/api/v1/group/regist.do")
-	public Map<String,String> createGroup(HttpServletRequest request, GroupDto groupDto ) throws Exception{
+    @PostMapping("/api/v1/group/crateGroup.do")
+	public Map<String,String> createGroup(HttpServletRequest request, MultipartHttpServletRequest multipartHttpServletRequest, GroupDto groupDto ) throws Exception{
         
         System.out.println("group.createGroup");
         
@@ -56,24 +59,20 @@ public class GroupController {
         groupDto.setCreateId( user.getUserId() );
 		  
     	Map<String,String> rtnMap = new HashMap<String,String>();
-        try{
-            groupService.createGroup(groupDto);
-        }catch(Exception e){
-            
-        }
+    	
+    	groupService.createGroup(groupDto);
         
         UserRelationGroupDto userRelationGroupDto = new UserRelationGroupDto();
         userRelationGroupDto.setGroupIdx( groupDto.getGroupIdx() );
         userRelationGroupDto.setUserId( groupDto.getCreateId() );
-        userRelationGroupDto.setGrade( DataDefine.GROUP_MASTER);
+        userRelationGroupDto.setGrade( DataDefine.GROUP_MASTER );
         groupService.enterGroup( userRelationGroupDto );
         rtnMap.put("result","success");
-
         return rtnMap;
 	}
     
     //그룹정보
-    @GetMapping(value="/api/v1/group/{gropuIdx}")
+    @GetMapping("/api/v1/group/{gropuIdx}")
 	public Map<String,String> selectGroup( GroupDto groupDto ) throws Exception{
     	Map<String,String> rtnMap = new HashMap<String,String>();
         System.out.println("group.selectGroup");
@@ -82,7 +81,7 @@ public class GroupController {
 	}
     
     //그룹 수정
-    @PutMapping(value="/api/v1/group/{gropuIdx}")
+    @PutMapping("/api/v1/group/{gropuIdx}")
 	public Map<String,String> updateGroup( GroupDto groupDto ) throws Exception{
     	Map<String,String> rtnMap = new HashMap<String,String>();
         System.out.println("group.updateGroup");
@@ -90,7 +89,7 @@ public class GroupController {
 	}
     
     //그룹 삭제
-    @DeleteMapping(value="/api/v1/group/{gropuIdx}")
+    @DeleteMapping("/api/v1/group/{gropuIdx}")
 	public Map<String,String> deleteGroup( GroupDto groupDto ) throws Exception{
     	Map<String,String> rtnMap = new HashMap<String,String>();
         System.out.println("group.deleteGroup");
@@ -98,7 +97,7 @@ public class GroupController {
 	}
     
     //그룹 가입
-    @PostMapping(value="/api/v1/group/{gropuIdx}/user/{userIdx}")
+    @PostMapping("/api/v1/group/{gropuIdx}/user/{userIdx}")
 	public Map<String,String> enterGroup( UserRelationGroupDto userRelationGroupDto ) throws Exception{
     	Map<String,String> rtnMap = new HashMap<String,String>();
     	groupService.enterGroup(userRelationGroupDto);
@@ -107,7 +106,7 @@ public class GroupController {
 	}
     
     //그룹 탈퇴
-	@DeleteMapping(value="/api/v1/group/{gropuIdx}/user/{userIdx}")
+	@DeleteMapping("/api/v1/group/{gropuIdx}/user/{userIdx}")
 	public Map<String,String> secedeGroup( UserRelationGroupDto userRelationGroupDto ) throws Exception{
 		Map<String,String> rtnMap = new HashMap<String,String>();
 		groupService.secedeGroup(userRelationGroupDto);

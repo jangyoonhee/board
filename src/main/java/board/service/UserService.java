@@ -1,7 +1,5 @@
 package board.service;
 
-import java.util.Map;
-
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import board.dto.UserDto;

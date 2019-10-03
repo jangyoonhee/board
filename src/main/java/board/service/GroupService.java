@@ -8,7 +8,7 @@ import board.dto.UserRelationGroupDto;
 
 public interface GroupService {
 	//그룹개설
-	public void createGroup( GroupDto groupDto ) throws Exception;;
+	public int createGroup( GroupDto groupDto ) throws Exception;;
     
     //그룹정보
 	public GroupDto selectGroup( GroupDto groupDto ) throws Exception;

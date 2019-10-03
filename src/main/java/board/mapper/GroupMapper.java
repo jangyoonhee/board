@@ -1,6 +1,7 @@
 package board.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -18,10 +19,10 @@ public interface GroupMapper {
     public List<GroupDto> selectMyListGroup( UserRelationGroupDto userRelationGroupDto ) throws Exception;
     
     //가입한 그룹 정보 리스트
-    public List<GroupDto> selectMyListGroupInfo( List<GroupDto> idxList ) throws Exception;
+    public List<GroupDto> selectMyListGroupInfo( Map<String, Object> map ) throws Exception;
     
     //그룹개설
-	public void createGroup( GroupDto groupDto ) throws Exception;
+	public int createGroup( GroupDto groupDto ) throws Exception;
     
     //그룹정보
 	public GroupDto selectGroup( GroupDto groupDto ) throws Exception;
